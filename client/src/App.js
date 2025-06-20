@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+import logo from './wedding-logo.png';
 import './App.css';
 
 function App() {
@@ -7,15 +7,15 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Hi Varun! Welcome to our wedding website!
+          ✌🏽 Website in progress ... ✌🏽
         </p>
         <a
           className="App-link"
-          href="https://reactjs.org"
+          href="https://www.youtube.com/watch?v=dElRVQFqj-k"
           target="_blank"
           rel="noopener noreferrer"
         >
-          A link
+          💃🏽💃🏽💃🏽
         </a>
       </header>
     </div>
