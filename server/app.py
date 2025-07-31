@@ -1,13 +1,20 @@
 from flask import Flask, send_from_directory, jsonify, request
 from flask_cors import CORS
-from models import db, RSVP
 import os
+import sys
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+from models import db, RSVP
 
-app = Flask(__name__, static_folder="../client/build", static_url_path="/")
+# Check if React build exists, otherwise serve from current directory
+static_folder = "../client/build" if os.path.exists("../client/build") else "."
+app = Flask(__name__, static_folder=static_folder, static_url_path="/")
 CORS(app)
 
 # Database configuration
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///rsvp.db')
+database_url = os.environ.get('DATABASE_URL', 'sqlite:///rsvp.db')
+if database_url.startswith('postgres://'):
+    database_url = database_url.replace('postgres://', 'postgresql://', 1)
+app.config['SQLALCHEMY_DATABASE_URI'] = database_url
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Initialize database
@@ -18,8 +25,12 @@ def hello():
     return jsonify(message="Hello from Flask!")
 
 # Create database tables
-with app.app_context():
-    db.create_all()
+# try:
+#     with app.app_context():
+#         db.create_all()
+#         print("Database tables created successfully")
+# except Exception as e:
+#     print(f"Error creating database tables: {e}")
 
 # RSVP API endpoints
 @app.route("/api/rsvp", methods=['POST'])
