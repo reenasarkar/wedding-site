@@ -25,12 +25,12 @@ def hello():
     return jsonify(message="Hello from Flask!")
 
 # Create database tables
-# try:
-#     with app.app_context():
-#         db.create_all()
-#         print("Database tables created successfully")
-# except Exception as e:
-#     print(f"Error creating database tables: {e}")
+try:
+    with app.app_context():
+        db.create_all()
+        print("Database tables created successfully")
+except Exception as e:
+    print(f"Error creating database tables: {e}")
 
 # RSVP API endpoints
 @app.route("/api/rsvp", methods=['POST'])
