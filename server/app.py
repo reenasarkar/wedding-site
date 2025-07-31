@@ -18,8 +18,7 @@ def hello():
     return jsonify(message="Hello from Flask!")
 
 # Create database tables
-@app.before_first_request
-def create_tables():
+with app.app_context():
     db.create_all()
 
 # RSVP API endpoints
