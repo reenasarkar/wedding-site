@@ -1,5 +1,15 @@
 {
+  "name": "wedding-site",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "cd client && npm install && npm run build",
+    "start": "cd server && python app.py"
+  },
   "dependencies": {
     "react-player": "^2.16.0"
+  },
+  "engines": {
+    "node": "18.x",
+    "npm": "9.x"
   }
 }
