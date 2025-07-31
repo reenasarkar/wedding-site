@@ -1,16 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.03269944.css",
-    "main.js": "/static/js/main.f90fa206.js",
+    "main.css": "/static/css/main.50806b72.css",
+    "main.js": "/static/js/main.7702a2a7.js",
     "static/js/453.a3c1d153.chunk.js": "/static/js/453.a3c1d153.chunk.js",
+    "static/media/moonlight-1.png": "/static/media/moonlight-1.99890c2361ac34f1d07d.png",
     "static/media/wedding-logo.png": "/static/media/wedding-logo.3cdfd9229452687fd446.png",
     "index.html": "/index.html",
-    "main.03269944.css.map": "/static/css/main.03269944.css.map",
-    "main.f90fa206.js.map": "/static/js/main.f90fa206.js.map",
+    "main.50806b72.css.map": "/static/css/main.50806b72.css.map",
+    "main.7702a2a7.js.map": "/static/js/main.7702a2a7.js.map",
     "453.a3c1d153.chunk.js.map": "/static/js/453.a3c1d153.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.03269944.css",
-    "static/js/main.f90fa206.js"
+    "static/css/main.50806b72.css",
+    "static/js/main.7702a2a7.js"
   ]
 }

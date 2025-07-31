@@ -1,0 +1,52 @@
+/* theme.css
+   Centralized CSS custom properties for theming */
+@import url('https://fonts.googleapis.com/css2?family=Proxima+Nova:wght@300;400;500;600;700&display=swap');
+
+:root {
+    /* Color Palette */
+    --color-primary:    #54726f;
+    --color-secondary:  #9db4ac;
+    --color-accent:     #7c7c7c;
+    --color-background: #fffcf5;
+    --color-surface:    #ffffff;
+    --color-text:       #7c7c7c;
+    --color-muted:      #d5dbd0;
+    --color-border:     #e0e0e0;
+    --color-success:    var(--color-secondary);
+    --color-warning:    #f1c40f;
+    --color-error:      var(--color-accent);
+  
+    /* Typography */
+    --font-family-sans:  'Proxima Nova', 'Helvetica Neue', Arial, sans-serif;
+    --font-family-serif: 'Georgia', serif;
+    --font-family-mono:  'Courier New', monospace;
+  
+    /* Font Sizes */
+    --font-size-xs: 12px;
+    --font-size-sm: 14px;
+    --font-size-md: 16px;
+    --font-size-lg: 18px;
+    --font-size-xl: 20px;
+    --font-size-xxl: 24px;
+    --font-size-xxxl: 40px;
+  
+    /* Spacing */
+    --spacer-0: 0;
+    --spacer-1: 4px;
+    --spacer-2: 8px;
+    --spacer-3: 16px;
+    --spacer-4: 24px;
+    --spacer-5: 48px;
+  
+    /* Breakpoints */
+    --breakpoint-xs: 0;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+  }
+
+  /* Global font application */
+  * {
+    font-family: var(--font-family-sans);
+  }
