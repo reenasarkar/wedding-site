@@ -15,6 +15,8 @@ class RSVP(db.Model):
     reception = db.Column(db.Boolean, default=False)
     dietary_restrictions = db.Column(db.Text)
     additional_notes = db.Column(db.Text)
+    plus_one_name = db.Column(db.String(100), nullable=True)
+    plus_one_email = db.Column(db.String(120), nullable=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     
@@ -32,6 +34,8 @@ class RSVP(db.Model):
             'reception': self.reception,
             'dietary_restrictions': self.dietary_restrictions,
             'additional_notes': self.additional_notes,
+            'plus_one_name': self.plus_one_name,
+            'plus_one_email': self.plus_one_email,
             'created_at': self.created_at.isoformat() if self.created_at else None,
             'updated_at': self.updated_at.isoformat() if self.updated_at else None
         }

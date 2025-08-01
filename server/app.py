@@ -51,7 +51,9 @@ def submit_rsvp():
             ceremony=data.get('events', {}).get('ceremony', False) if data['attending'] == 'yes' else False,
             reception=data.get('events', {}).get('reception', False) if data['attending'] == 'yes' else False,
             dietary_restrictions=data.get('dietaryRestrictions', '') if data['attending'] == 'yes' else '',
-            additional_notes=data.get('additionalNotes', '')
+            additional_notes=data.get('additionalNotes', ''),
+            plus_one_name=data.get('plusOneName', ''),
+            plus_one_email=data.get('plusOneEmail', '')
         )
         
         db.session.add(rsvp)
@@ -76,6 +78,28 @@ def get_rsvps():
             'attending': len([r for r in rsvps if r.attending]),
             'not_attending': len([r for r in rsvps if not r.attending])
         })
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@app.route("/api/rsvp/<guest_name>", methods=['GET'])
+def get_rsvp_by_guest(guest_name):
+    try:
+        # Find the most recent RSVP for this guest
+        rsvp = RSVP.query.filter(
+            db.func.lower(RSVP.name) == db.func.lower(guest_name)
+        ).order_by(RSVP.created_at.desc()).first()
+        
+        if rsvp:
+            return jsonify({
+                'found': True,
+                'rsvp': rsvp.to_dict()
+            })
+        else:
+            return jsonify({
+                'found': False,
+                'message': 'No RSVP found for this guest'
+            })
+            
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 

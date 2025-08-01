@@ -13,6 +13,8 @@ from models import InvitedGuest
 
 # Sample guest list - replace with your actual guests
 GUEST_LIST = [
+    {"name": "Reena Sarkar", "email": "reena.sarkar15@gmail.com", "plus_one_allowed": False, "associated_guest": "Varun Vohra"},
+    {"name": "Varun Vohra", "email": "vrnvhr22@gmail.com", "plus_one_allowed": False, "associated_guest": "Ur butt hole"},
     {"name": "Amanda Chen", "email": "amandac188@gmail.com", "plus_one_allowed": False, "associated_guest": "Cody Wall"},
     {"name": "Cody Wall", "email": "", "plus_one_allowed": False, "associated_guest": "Amanda Chen"},
     {"name": "Chinyu Sarkar", "email": "", "plus_one_allowed": False, "associated_guest": "Soumyo Sarkar"},

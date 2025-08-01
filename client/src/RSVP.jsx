@@ -31,6 +31,9 @@ export default function RSVP() {
   // Use ref to store timeout ID for proper debouncing
   const debounceTimeoutRef = useRef(null);
 
+  // State to track if existing RSVP was loaded
+  const [existingRSVP, setExistingRSVP] = useState(null);
+
   // Cleanup timeout on unmount
   useEffect(() => {
     return () => {
@@ -39,6 +42,39 @@ export default function RSVP() {
       }
     };
   }, []);
+
+  const loadExistingRSVP = async (guestName) => {
+    try {
+      const response = await fetch(`/api/rsvp/${encodeURIComponent(guestName)}`);
+      if (response.ok) {
+        const result = await response.json();
+        if (result.found) {
+          setExistingRSVP(result.rsvp);
+          // Populate form with existing data
+          setFormData({
+            name: result.rsvp.name,
+            email: result.rsvp.email,
+            attending: result.rsvp.attending ? 'yes' : 'no',
+            events: {
+              welcomeDinner: result.rsvp.welcome_dinner,
+              ceremony: result.rsvp.ceremony,
+              reception: result.rsvp.reception
+            },
+            dietaryRestrictions: result.rsvp.dietary_restrictions || '',
+            additionalNotes: result.rsvp.additional_notes || '',
+            plusOneName: result.rsvp.plus_one_name || '',
+            plusOneEmail: result.rsvp.plus_one_email || ''
+          });
+          setIsNameEntered(true);
+        } else {
+          setExistingRSVP(null);
+        }
+      }
+    } catch (error) {
+      console.error('Error loading existing RSVP:', error);
+      setExistingRSVP(null);
+    }
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -80,6 +116,10 @@ export default function RSVP() {
             message: `Welcome, ${result.guest.name}!`,
             guest: result.guest
           });
+          // Load existing RSVP if guest is already on the list
+          if (result.guest.name) {
+            loadExistingRSVP(result.guest.name);
+          }
         } else {
           setGuestValidation({
             isValid: false,
@@ -218,6 +258,7 @@ export default function RSVP() {
       message: '',
       guest: null
     });
+    setExistingRSVP(null);
   };
 
   // Check if form should be enabled
@@ -285,6 +326,11 @@ export default function RSVP() {
             {guestValidation.message && !guestValidation.isChecking && (
               <div className={`guest-message ${guestValidation.isValid ? 'guest-valid' : guestValidation.suggestions.length > 0 ? 'guest-suggestions' : 'guest-invalid'}`}>
                 {guestValidation.message}
+              </div>
+            )}
+            {existingRSVP && (
+              <div className="existing-rsvp-message">
+                We found your previous RSVP! You can modify your responses below.
               </div>
             )}
             {!isNameEntered && (
