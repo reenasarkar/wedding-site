@@ -400,6 +400,7 @@
 
 .form-group {
   margin-bottom: var(--spacer-4);
+  margin-top: var(--spacer-4);
 }
 
 .form-group label {
