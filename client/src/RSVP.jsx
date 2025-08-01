@@ -44,8 +44,6 @@ export default function RSVP() {
       return;
     }
 
-    setGuestValidation(prev => ({ ...prev, isChecking: true }));
-
     try {
       const response = await fetch('/api/check-guest', {
         method: 'POST',
@@ -115,10 +113,17 @@ export default function RSVP() {
       return;
     }
 
-    // Debounce the API call
+    // Show loading state immediately
+    setGuestValidation(prev => ({ 
+      ...prev, 
+      isChecking: true,
+      message: '' // Clear any previous messages
+    }));
+
+    // Debounce the API call for 3 seconds
     const timeoutId = setTimeout(() => {
       checkGuest(value);
-    }, 500);
+    }, 2000);
 
     return () => clearTimeout(timeoutId);
   };

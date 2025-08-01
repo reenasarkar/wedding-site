@@ -600,6 +600,24 @@
   font-size: var(--font-size-sm);
   margin-top: var(--spacer-1);
   font-style: italic;
+  display: flex;
+  align-items: center;
+  gap: var(--spacer-1);
+}
+
+.guest-checking::before {
+  content: '';
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--color-accent);
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .guest-message {
