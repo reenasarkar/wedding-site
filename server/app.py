@@ -4,6 +4,7 @@ import os
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from models import db, RSVP, InvitedGuest
+from datetime import datetime
 
 # Check if React build exists, otherwise serve from current directory
 static_folder = "../client/build" if os.path.exists("../client/build") else "."
@@ -42,27 +43,52 @@ def submit_rsvp():
         if not data.get('name') or not data.get('email') or data.get('attending') is None:
             return jsonify({'error': 'Name, email, and attendance status are required'}), 400
         
-        # Create new RSVP
-        rsvp = RSVP(
-            name=data['name'],
-            email=data['email'],
-            attending=data['attending'] == 'yes',
-            welcome_dinner=data.get('events', {}).get('welcomeDinner', False) if data['attending'] == 'yes' else False,
-            ceremony=data.get('events', {}).get('ceremony', False) if data['attending'] == 'yes' else False,
-            reception=data.get('events', {}).get('reception', False) if data['attending'] == 'yes' else False,
-            dietary_restrictions=data.get('dietaryRestrictions', '') if data['attending'] == 'yes' else '',
-            additional_notes=data.get('additionalNotes', ''),
-            plus_one_name=data.get('plusOneName', ''),
-            plus_one_email=data.get('plusOneEmail', '')
-        )
+        # Check if RSVP already exists for this guest
+        existing_rsvp = RSVP.query.filter(
+            db.func.lower(RSVP.name) == db.func.lower(data['name'])
+        ).order_by(RSVP.created_at.desc()).first()
         
-        db.session.add(rsvp)
-        db.session.commit()
-        
-        return jsonify({
-            'message': 'RSVP submitted successfully',
-            'rsvp': rsvp.to_dict()
-        }), 201
+        if existing_rsvp:
+            # Update existing RSVP
+            existing_rsvp.email = data['email']
+            existing_rsvp.attending = data['attending'] == 'yes'
+            existing_rsvp.welcome_dinner = data.get('events', {}).get('welcomeDinner', False) if data['attending'] == 'yes' else False
+            existing_rsvp.ceremony = data.get('events', {}).get('ceremony', False) if data['attending'] == 'yes' else False
+            existing_rsvp.reception = data.get('events', {}).get('reception', False) if data['attending'] == 'yes' else False
+            existing_rsvp.dietary_restrictions = data.get('dietaryRestrictions', '') if data['attending'] == 'yes' else ''
+            existing_rsvp.additional_notes = data.get('additionalNotes', '')
+            existing_rsvp.plus_one_name = data.get('plusOneName', '')
+            existing_rsvp.plus_one_email = data.get('plusOneEmail', '')
+            existing_rsvp.updated_at = datetime.utcnow()
+            
+            db.session.commit()
+            
+            return jsonify({
+                'message': 'RSVP updated successfully',
+                'rsvp': existing_rsvp.to_dict()
+            }), 200
+        else:
+            # Create new RSVP
+            rsvp = RSVP(
+                name=data['name'],
+                email=data['email'],
+                attending=data['attending'] == 'yes',
+                welcome_dinner=data.get('events', {}).get('welcomeDinner', False) if data['attending'] == 'yes' else False,
+                ceremony=data.get('events', {}).get('ceremony', False) if data['attending'] == 'yes' else False,
+                reception=data.get('events', {}).get('reception', False) if data['attending'] == 'yes' else False,
+                dietary_restrictions=data.get('dietaryRestrictions', '') if data['attending'] == 'yes' else '',
+                additional_notes=data.get('additionalNotes', ''),
+                plus_one_name=data.get('plusOneName', ''),
+                plus_one_email=data.get('plusOneEmail', '')
+            )
+            
+            db.session.add(rsvp)
+            db.session.commit()
+            
+            return jsonify({
+                'message': 'RSVP submitted successfully',
+                'rsvp': rsvp.to_dict()
+            }), 201
         
     except Exception as e:
         db.session.rollback()
