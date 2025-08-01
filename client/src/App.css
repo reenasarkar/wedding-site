@@ -643,3 +643,9 @@
   background-color: #ffebee;
   border-left-color: #f44336;
 }
+
+.guest-suggestions {
+  color: #d32f2f;
+  background-color: var(--color-warning);
+  border-left-color: #f44336;
+}

@@ -122,7 +122,7 @@ export default function RSVP() {
 
     const timeoutId = setTimeout(() => {
       checkGuest(value);
-    }, 2000);
+    }, 5000);
 
     return () => clearTimeout(timeoutId);
   };
@@ -230,7 +230,7 @@ export default function RSVP() {
               <div className="guest-checking">Checking guest list...</div>
             )}
             {guestValidation.message && !guestValidation.isChecking && (
-              <div className={`guest-message ${guestValidation.isValid ? 'guest-valid' : 'guest-invalid'}`}>
+              <div className={`guest-message ${guestValidation.isValid ? 'guest-valid' : guestValidation.suggestions.length > 0 ? 'guest-suggestions' : 'guest-invalid'}`}>
                 {guestValidation.message}
               </div>
             )}
