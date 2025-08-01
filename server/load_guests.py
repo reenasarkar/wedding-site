@@ -15,6 +15,9 @@ from models import InvitedGuest
 GUEST_LIST = [
     {"name": "Amanda Chen", "email": "amandac188@gmail.com", "plus_one_allowed": False},
     {"name": "Cody Wall", "email": "", "plus_one_allowed": False},
+    {"name": "Chinyu Sarkar", "email": "", "plus_one_allowed": False},
+    {"name": "Soumyo Sarkar", "email": "", "plus_one_allowed": False},
+    {"name": "Sumit Sarkar", "email": "ssarkar45678@gmail.com", "plus_one_allowed": False},
     {"name": "Teja Yeramosu", "email": "", "plus_one_allowed": True, "plus_one_name": ""},
     # Add more guests here...
 ]

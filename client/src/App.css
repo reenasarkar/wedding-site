@@ -553,9 +553,12 @@
 
 .rsvp-enter-name {
   color: var(--color-primary);
-  font-size: var(--font-size-md);
-  margin-bottom: var(--spacer-4);
-  font-weight: 700;
+  font-size: var(--font-size-sm);
+  margin-top: var(--spacer-1);
+  padding: var(--spacer-1);
+  border-radius: var(--border-radius);
+  /* border-left: 3px solid var(--color-accent); */
+  /* background-color: var(--color-muted); */
 }
 
 .rsvp-button:hover {
@@ -599,7 +602,8 @@
   color: var(--color-accent);
   font-size: var(--font-size-sm);
   margin-top: var(--spacer-1);
-  font-style: italic;
+  padding: var(--spacer-1);
+  border-radius: var(--border-radius);
   display: flex;
   align-items: center;
   gap: var(--spacer-1);

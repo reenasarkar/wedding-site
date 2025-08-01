@@ -235,11 +235,10 @@ export default function RSVP() {
                 {guestValidation.message}
               </div>
             )}
-          </div>
-
-          {!isNameEntered && (
+            {!isNameEntered && (
             <div className='rsvp-enter-name'>Please enter your first and last name first to continue 🥳</div>
           )}
+          </div>
 
           <div className="form-group">
             <label htmlFor="email">Email Address *</label>
