@@ -22,7 +22,8 @@ export default function RSVP() {
     isValid: false,
     isChecking: false,
     suggestions: [],
-    message: ''
+    message: '',
+    guest: null
   });
 
   const handleInputChange = (e) => {
@@ -39,7 +40,8 @@ export default function RSVP() {
         isValid: false,
         isChecking: false,
         suggestions: [],
-        message: ''
+        message: '',
+        guest: null
       });
       return;
     }
@@ -61,7 +63,8 @@ export default function RSVP() {
             isValid: true,
             isChecking: false,
             suggestions: [],
-            message: `Welcome, ${result.guest.name}!`
+            message: `Welcome, ${result.guest.name}!`,
+            guest: result.guest
           });
         } else {
           setGuestValidation({
@@ -70,7 +73,8 @@ export default function RSVP() {
             suggestions: result.suggestions || [],
             message: result.suggestions && result.suggestions.length > 0 
               ? `Hmm, couldn't find you. Did you mean ${result.suggestions.join(', ')}?`
-              : result.message || 'Name not found in guest list'
+              : result.message || 'Name not found in guest list',
+            guest: null
           });
         }
       } else {
@@ -78,7 +82,8 @@ export default function RSVP() {
           isValid: false,
           isChecking: false,
           suggestions: [],
-          message: 'Error checking guest list. Please try again.'
+          message: 'Error checking guest list. Please try again.',
+          guest: null
         });
       }
     } catch (error) {
@@ -87,7 +92,8 @@ export default function RSVP() {
         isValid: false,
         isChecking: false,
         suggestions: [],
-        message: 'Error checking guest list. Please try again.'
+        message: 'Error checking guest list. Please try again.',
+        guest: null
       });
     }
   };
@@ -108,7 +114,8 @@ export default function RSVP() {
         isValid: false,
         isChecking: false,
         suggestions: [],
-        message: ''
+        message: '',
+        guest: null
       });
       return;
     }
@@ -183,7 +190,8 @@ export default function RSVP() {
       isValid: false,
       isChecking: false,
       suggestions: [],
-      message: ''
+      message: '',
+      guest: null
     });
   };
 
