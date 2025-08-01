@@ -634,7 +634,7 @@
 }
 
 .guest-valid {
-  background-color: var(--color-for-rsvp);
+  background-color: var(--color-muted);
   border-left-color: var(--color-primary);
   color: var(--color-primary);
 }
@@ -669,6 +669,6 @@
   padding: var(--spacer-1);
   border-radius: var(--border-radius);
   border-left: 3px solid var(--color-primary);
-  background-color: var(--color-for-rsvp);
+  background-color: var(--color-muted);
   font-weight: 700;
 }
