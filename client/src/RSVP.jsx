@@ -13,7 +13,9 @@ export default function RSVP() {
       reception: false
     },
     dietaryRestrictions: '',
-    additionalNotes: ''
+    additionalNotes: '',
+    plusOneName: '',
+    plusOneEmail: ''
   });
 
   const [isNameEntered, setIsNameEntered] = useState(false);
@@ -182,7 +184,9 @@ export default function RSVP() {
         reception: false
       },
       dietaryRestrictions: '',
-      additionalNotes: ''
+      additionalNotes: '',
+      plusOneName: '',
+      plusOneEmail: ''
     });
     setIsNameEntered(false);
     setIsSubmitted(false);
@@ -204,11 +208,18 @@ export default function RSVP() {
     
     const guest = guestValidation.guest;
     
-    if (guest.associated_guest) {
+    if (guest.plus_one_allowed) {
+      return "You do have a plus one! If you'd like to bring someone, let's get their info.";
+    } else if (guest.associated_guest) {
       return `You don't have a plus one, but you are associated with ${guest.associated_guest}`;
     } else {
       return "You don't have a plus one. If you think you should have one, take it up with Reena or Varun";
     }
+  };
+
+  // Check if guest has plus one
+  const hasPlusOne = () => {
+    return guestValidation.isValid && guestValidation.guest && guestValidation.guest.plus_one_allowed;
   };
 
   if (isSubmitted) {
@@ -310,6 +321,36 @@ export default function RSVP() {
               <div className="associated-guest-info">
                 {associatedGuestInfo()}
               </div>
+              
+              {hasPlusOne() && (
+                <>
+                  <div className="form-group">
+                    <label htmlFor="plusOneName">Plus One Name</label>
+                    <input
+                      type="text"
+                      id="plusOneName"
+                      name="plusOneName"
+                      value={formData.plusOneName}
+                      onChange={handleInputChange}
+                      placeholder="Enter your plus one's full name"
+                      className="form-input"
+                    />
+                  </div>
+                  
+                  <div className="form-group">
+                    <label htmlFor="plusOneEmail">Plus One Email</label>
+                    <input
+                      type="email"
+                      id="plusOneEmail"
+                      name="plusOneEmail"
+                      value={formData.plusOneEmail}
+                      onChange={handleInputChange}
+                      placeholder="Enter your plus one's email address"
+                      className="form-input"
+                    />
+                  </div>
+                </>
+              )}
             </div>
           )}
 
