@@ -325,7 +325,7 @@ export default function RSVP() {
               {hasPlusOne() && (
                 <>
                   <div className="form-group">
-                    <label htmlFor="plusOneName">Plus One Name</label>
+                    <label htmlFor="plusOneName">Name of your Plus One Person</label>
                     <input
                       type="text"
                       id="plusOneName"
@@ -338,7 +338,7 @@ export default function RSVP() {
                   </div>
                   
                   <div className="form-group">
-                    <label htmlFor="plusOneEmail">Plus One Email</label>
+                    <label htmlFor="plusOneEmail">Email of your Plus One Person</label>
                     <input
                       type="email"
                       id="plusOneEmail"
