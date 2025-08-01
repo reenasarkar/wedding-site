@@ -82,6 +82,11 @@ export default function RSVP() {
       ...prev,
       [name]: value
     }));
+    
+    // Clear existing RSVP message when user starts modifying input
+    if (existingRSVP) {
+      setExistingRSVP(null);
+    }
   };
 
   const checkGuest = async (name) => {
@@ -176,7 +181,14 @@ export default function RSVP() {
         clearTimeout(debounceTimeoutRef.current);
         debounceTimeoutRef.current = null;
       }
+      // Clear existing RSVP message
+      setExistingRSVP(null);
       return;
+    }
+
+    // Clear existing RSVP message when name is modified
+    if (existingRSVP) {
+      setExistingRSVP(null);
     }
 
     // Show loading state immediately
