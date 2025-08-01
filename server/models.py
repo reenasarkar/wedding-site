@@ -44,6 +44,7 @@ class InvitedGuest(db.Model):
     email = db.Column(db.String(120), nullable=True)  # Optional email
     plus_one_allowed = db.Column(db.Boolean, default=False)
     plus_one_name = db.Column(db.String(100), nullable=True)
+    associated_guest = db.Column(db.String(100), nullable=True)  # Name of associated guest (spouse, partner, etc.)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     
     def __repr__(self):
@@ -56,5 +57,6 @@ class InvitedGuest(db.Model):
             'email': self.email,
             'plus_one_allowed': self.plus_one_allowed,
             'plus_one_name': self.plus_one_name,
+            'associated_guest': self.associated_guest,
             'created_at': self.created_at.isoformat() if self.created_at else None
         } 

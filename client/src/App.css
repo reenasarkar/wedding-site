@@ -649,3 +649,14 @@
   background-color: var(--color-warning);
   border-left-color: var(--color-accent);
 }
+
+.associated-guest-info {
+  color: var(--color-primary);
+  font-size: var(--font-size-sm);
+  margin-top: var(--spacer-1);
+  padding: var(--spacer-1);
+  border-radius: var(--border-radius);
+  border-left: 3px solid var(--color-primary);
+  background-color: var(--color-muted);
+  font-style: italic;
+}

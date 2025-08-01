@@ -13,15 +13,15 @@ from models import InvitedGuest
 
 # Sample guest list - replace with your actual guests
 GUEST_LIST = [
-    {"name": "Amanda Chen", "email": "amandac188@gmail.com", "plus_one_allowed": False},
-    {"name": "Cody Wall", "email": "", "plus_one_allowed": False},
-    {"name": "Chinyu Sarkar", "email": "", "plus_one_allowed": False},
-    {"name": "Soumyo Sarkar", "email": "", "plus_one_allowed": False},
-    {"name": "Sumit Sarkar", "email": "ssarkar45678@gmail.com", "plus_one_allowed": False},
-    {"name": "Rhea Vohra", "email": "", "plus_one_allowed": False},
-    {"name": "Ritu Vohra", "email": "", "plus_one_allowed": False},
-    {"name": "Rohit Vohra", "email": "", "plus_one_allowed": False},
-    {"name": "Teja Yeramosu", "email": "", "plus_one_allowed": True, "plus_one_name": ""},
+    {"name": "Amanda Chen", "email": "amandac188@gmail.com", "plus_one_allowed": False, "associated_guest": "Cody Wall"},
+    {"name": "Cody Wall", "email": "", "plus_one_allowed": False, "associated_guest": ""},
+    {"name": "Chinyu Sarkar", "email": "", "plus_one_allowed": False, "associated_guest": "Soumyo Sarkar"},
+    {"name": "Soumyo Sarkar", "email": "", "plus_one_allowed": False, "associated_guest": "Chinyu Sarkar"},
+    {"name": "Sumit Sarkar", "email": "ssarkar45678@gmail.com", "plus_one_allowed": False, "associated_guest": ""},
+    {"name": "Rhea Vohra", "email": "", "plus_one_allowed": False, "associated_guest": ""},
+    {"name": "Ritu Vohra", "email": "", "plus_one_allowed": False, "associated_guest": ""},
+    {"name": "Rohit Vohra", "email": "", "plus_one_allowed": False, "associated_guest": ""},
+    {"name": "Teja Yeramosu", "email": "", "plus_one_allowed": True, "plus_one_name": "", "associated_guest": ""},
     # Add more guests here...
 ]
 

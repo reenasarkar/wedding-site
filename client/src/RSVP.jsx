@@ -190,6 +190,19 @@ export default function RSVP() {
   // Check if form should be enabled
   const isFormEnabled = isNameEntered && guestValidation.isValid;
 
+  // Get associated guest info for display
+  const associatedGuestInfo = () => {
+    if (!guestValidation.isValid || !guestValidation.guest) return null;
+    
+    const guest = guestValidation.guest;
+    
+    if (guest.associated_guest) {
+      return `You don't have a plus one, but you are associated with ${guest.associated_guest}`;
+    } else {
+      return "You don't have a plus one. If you think you should have one, take it up with Reena or Varun";
+    }
+  };
+
   if (isSubmitted) {
     return (
       <div className="rsvp">
@@ -282,6 +295,14 @@ export default function RSVP() {
               </label>
             </div>
           </div>
+
+          {formData.attending === 'yes' && associatedGuestInfo() && (
+            <div className="form-group">
+              <div className="associated-guest-info">
+                {associatedGuestInfo()}
+              </div>
+            </div>
+          )}
 
           {formData.attending === 'yes' && (
             <>
