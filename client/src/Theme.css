@@ -17,7 +17,7 @@
     --color-error:      var(--color-accent);
   
     /* Typography */
-    --font-family-sans:  'Proxima Nova', 'Helvetica Neue', Arial, sans-serif;
+    --font-family-sans:  'Proxima Nova', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
     --font-family-serif: 'Georgia', serif;
     --font-family-mono:  'Courier New', monospace;
   
