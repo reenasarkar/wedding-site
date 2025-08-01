@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import RVHeader from './RV-Header';
+import logo from './wedding-logo.png';
 
 export default function RSVP() {
   const [formData, setFormData] = useState({
@@ -95,6 +95,7 @@ export default function RSVP() {
     return (
       <div className="rsvp">
         <div className="rsvp-main">
+          <img src={logo} className="page-app-logo" alt="logo" />
           <div className="rsvp-success">
             <h1>Thank You!</h1>
             <p>Your RSVP has been submitted successfully.</p>
@@ -110,8 +111,8 @@ export default function RSVP() {
 
   return (
     <div className="rsvp">
-      <RVHeader />
       <div className="rsvp-main">
+        <img src={logo} className="page-app-logo" alt="logo" />
         <p className="rsvp-subtitle">Please respond by April 1st, 2026</p>
         
         <form onSubmit={handleSubmit} className="rsvp-form">
@@ -213,7 +214,7 @@ export default function RSVP() {
                       onChange={() => handleEventChange('reception')}
                     />
                     <span className="event-info">
-                      <strong>Reception & Dinner</strong>
+                      <strong>Reception</strong>
                       <span className="event-details">Sun May 24, 2026 • 6 pm - ∞</span>
                     </span>
                   </label>
