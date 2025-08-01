@@ -18,6 +18,9 @@ GUEST_LIST = [
     {"name": "Chinyu Sarkar", "email": "", "plus_one_allowed": False},
     {"name": "Soumyo Sarkar", "email": "", "plus_one_allowed": False},
     {"name": "Sumit Sarkar", "email": "ssarkar45678@gmail.com", "plus_one_allowed": False},
+    {"name": "Rhea Vohra", "email": "", "plus_one_allowed": False},
+    {"name": "Ritu Vohra", "email": "", "plus_one_allowed": False},
+    {"name": "Rohit Vohra", "email": "", "plus_one_allowed": False},
     {"name": "Teja Yeramosu", "email": "", "plus_one_allowed": True, "plus_one_name": ""},
     # Add more guests here...
 ]
