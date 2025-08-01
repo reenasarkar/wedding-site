@@ -13,9 +13,18 @@ export default function Travel() {
         <h1>Travel & Stay</h1>
         <p className="travel-description">
           Nestled in the Montana Rockies, One & Only Moonlight Basin is a stunning mountain retreat where luxury meets nature.
-          Think cozy lodges, sweeping alpine views, gourmet dining, and endless outdoor adventures—from hiking to fly-fishing.
-          It's the perfect place for a romantic, high-elevation celebration with family and friends.
         </p>
+
+        <div className="hotel-link-section">
+          <a 
+            href="https://www.oneandonlyresorts.com/moonlight-basin" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="hotel-link-button"
+          >
+            Learn about OO Moonlight Basin →
+          </a>
+        </div>
 
         <div className="map-section">
           <h1>Hotel & Events Location</h1>
@@ -33,7 +42,10 @@ export default function Travel() {
           </div>
           <p className="map-description">
             All events & hotel rooms are located at the <strong>One & Only Moonlight Basin</strong>.
-            It looks like the middle of nowhere on this map, but it is not.
+          </p>
+          <p className="map-description">
+            Jack Creek Rd<br />
+            Big Sky, MT 59716
           </p>
         </div>
 
@@ -59,7 +71,7 @@ export default function Travel() {
                 
                 <div className="transport-option">
                   <h4>Shuttle Service</h4>
-                  <p>We're working on arranging shuttle service for our guests. More details to come!</p>
+                  <p>We're working on arranging shuttle service for our guests. TBD. Lets see</p>
                 </div>
                 
                 <div className="transport-option">

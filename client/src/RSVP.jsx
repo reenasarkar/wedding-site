@@ -113,7 +113,7 @@ export default function RSVP() {
     <div className="rsvp">
       <div className="rsvp-main">
         <img src={logo} className="page-app-logo" alt="logo" />
-        <p className="rsvp-subtitle">Please respond by April 1st, 2026</p>
+        <p className="rsvp-subtitle">Please respond by February 1st, 2026</p>
         
         <form onSubmit={handleSubmit} className="rsvp-form">
           <div className="form-group">

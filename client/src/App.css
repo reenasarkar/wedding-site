@@ -88,13 +88,14 @@
 /* Mobile optimization for Home page */
 @media (max-width: 768px) {
   .home-header {
-    padding: var(--spacer-3);
+    padding: var(--spacer-2);
     min-height: calc(100vh - 50px); /* Account for sticky header */
   }
   
   .home-title {
     font-size: var(--font-size-xxl);
-    margin-bottom: var(--spacer-3);
+    margin-bottom: var(--spacer-2);
+    margin-top: var(--spacer-3);
   }
   
   .home-date {
@@ -110,13 +111,14 @@
 
 @media (max-width: 480px) {
   .home-header {
-    padding: var(--spacer-2);
+    padding: var(--spacer-1);
+    min-height: calc(100vh - 50px);
   }
   
   .home-title {
     font-size: var(--font-size-xl);
-    margin-bottom: var(--spacer-2);
-    margin-top: var(--spacer-6);
+    margin-bottom: var(--spacer-1);
+    margin-top: var(--spacer-2);
   }
   
   .home-date {
@@ -188,6 +190,37 @@
   text-align: center;
   max-width: 800px;
   padding-bottom: var(--spacer-2);
+}
+
+.hotel-link-section {
+  text-align: center;
+  margin: var(--spacer-3) var(--spacer-4) var(--spacer-4) var(--spacer-4);
+}
+
+.hotel-link-button {
+  display: inline-block;
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 600;
+  padding: var(--spacer-2) var(--spacer-4);
+  border: 2px solid var(--color-primary);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.hotel-link-button:hover {
+  background-color: var(--color-primary);
+  color: white;
+  text-decoration: none;
+}
+
+/* Mobile optimization for hotel link button */
+@media (max-width: 768px) {
+  .hotel-link-button {
+    padding: var(--spacer-2) var(--spacer-4);
+    font-size: var(--font-size-sm);
+    margin-top: 0px
+  }
 }
 
 .map-section {

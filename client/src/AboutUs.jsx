@@ -1,0 +1,13 @@
+import React from 'react';
+import logo from './wedding-logo.png'
+
+export default function AboutUs() {
+  return (
+    <div className='schedule'>
+      <img src={logo} className="page-app-logo" alt="logo" />
+
+      <h1>About Us</h1>
+      <p>Coming Soon</p>
+    </div>
+  )
+}

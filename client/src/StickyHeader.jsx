@@ -20,6 +20,8 @@ export default function StickyHeader({ onNavigate }) {
     { key: 'travel', label: 'Travel & Stay' },
     { key: 'schedule', label: 'Event Schedule' },
     { key: 'rsvp', label: 'RSVP' },
+    { key: 'faq', label: 'FAQ' },
+    { key: 'about-us', label: 'About Us' },
   ];
 
   return (
