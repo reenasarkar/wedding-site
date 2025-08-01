@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 import logo from './wedding-logo.png';
 
@@ -27,6 +27,18 @@ export default function RSVP() {
     message: '',
     guest: null
   });
+
+  // Use ref to store timeout ID for proper debouncing
+  const debounceTimeoutRef = useRef(null);
+
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (debounceTimeoutRef.current) {
+        clearTimeout(debounceTimeoutRef.current);
+      }
+    };
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -119,6 +131,11 @@ export default function RSVP() {
         message: '',
         guest: null
       });
+      // Clear any existing timeout
+      if (debounceTimeoutRef.current) {
+        clearTimeout(debounceTimeoutRef.current);
+        debounceTimeoutRef.current = null;
+      }
       return;
     }
 
@@ -129,11 +146,15 @@ export default function RSVP() {
       message: '' // Clear any previous messages
     }));
 
-    const timeoutId = setTimeout(() => {
+    // Clear any existing timeout
+    if (debounceTimeoutRef.current) {
+      clearTimeout(debounceTimeoutRef.current);
+    }
+
+    // Set new timeout for debouncing
+    debounceTimeoutRef.current = setTimeout(() => {
       checkGuest(value);
     }, 2000);
-
-    return () => clearTimeout(timeoutId);
   };
 
   const handleEventChange = (eventName) => {
