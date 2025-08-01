@@ -120,7 +120,6 @@ export default function RSVP() {
       message: '' // Clear any previous messages
     }));
 
-    // Debounce the API call for 3 seconds
     const timeoutId = setTimeout(() => {
       checkGuest(value);
     }, 2000);
