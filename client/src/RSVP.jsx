@@ -129,7 +129,7 @@ export default function RSVP() {
 
     const timeoutId = setTimeout(() => {
       checkGuest(value);
-    }, 5000);
+    }, 2000);
 
     return () => clearTimeout(timeoutId);
   };
@@ -306,6 +306,7 @@ export default function RSVP() {
 
           {formData.attending === 'yes' && associatedGuestInfo() && (
             <div className="form-group">
+              <p className='form-question'>Plus one?</p>
               <div className="associated-guest-info">
                 {associatedGuestInfo()}
               </div>

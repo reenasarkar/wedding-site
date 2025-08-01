@@ -7,7 +7,8 @@ import reportWebVitals from './reportWebVitals';
 // Font loading check
 if ('fonts' in document) {
   document.fonts.ready.then(() => {
-    console.log('Fonts loaded successfully');
+    console.log('Reena says the fonts loaded successfully');
+    console.log('Reena also says hello!\nShe is wondering why you are looking at the console!\nIf there is an issue please let her know.');
   });
 }
 
