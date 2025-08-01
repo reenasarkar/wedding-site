@@ -634,9 +634,9 @@
 }
 
 .guest-valid {
-  color: #2e7d32;
-  background-color: #f1f8e9;
-  border-left-color: #4caf50;
+  background-color: var(--color-for-rsvp);
+  border-left-color: var(--color-primary);
+  color: var(--color-primary);
 }
 
 .guest-invalid {
@@ -663,12 +663,12 @@
 }
 
 .existing-rsvp-message {
-  color: #2e7d32;
+  color: var(--color-primary);
   font-size: var(--font-size-sm);
   margin-top: var(--spacer-1);
   padding: var(--spacer-1);
   border-radius: var(--border-radius);
-  border-left: 3px solid #4caf50;
-  background-color: #f1f8e9;
-  font-weight: 500;
+  border-left: 3px solid var(--color-primary);
+  background-color: var(--color-for-rsvp);
+  font-weight: 700;
 }
