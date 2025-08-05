@@ -798,7 +798,7 @@
 .faq {
   max-width: 800px;
   margin: 0 auto;
-  padding: var(--spacer-4);
+  padding: 0 var(--spacer-4) var(--spacer-4) var(--spacer-4);
 }
 
 .faq h1 {
