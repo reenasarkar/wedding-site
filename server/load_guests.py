@@ -87,7 +87,7 @@ GUEST_LIST = [
     {"name": "Lucia Sablich", "email": "", "plus_one_allowed": False, "associated_guest": "Adri & Sofya"},
     {"name": "Sanat Deshpande", "email": "", "plus_one_allowed": True, "associated_guest": ""},
     {"name": "Roman Darker", "email": "", "plus_one_allowed": False, "associated_guest": "Charlie"},
-    {"name": "Roman Loggins", "email": "", "plus_one_allowed": False, "associated_guest": "Roman Darker"},
+    {"name": "Charlie Loggins", "email": "", "plus_one_allowed": False, "associated_guest": "Roman Darker"},
     {"name": "Vijaya Dasari", "email": "", "plus_one_allowed": False, "associated_guest": "Amit Nag"},
     {"name": "Amit Nag", "email": "", "plus_one_allowed": False, "associated_guest": "j4kix"},
     {"name": "Jaimin Patel", "email": "", "plus_one_allowed": False, "associated_guest": "Kajal, our new golf queen"},
