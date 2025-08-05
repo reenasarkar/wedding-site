@@ -523,7 +523,7 @@ export default function RSVP() {
           )}
 
           <div className="form-group">
-            <label htmlFor="additionalNotes">Please put your address here! Also any additional notes (like, did I get your name wrong?)</label>
+            <label htmlFor="additionalNotes">Please put your address here! Also, any additional notes (like, did I get your name wrong?)</label>
             <textarea
               id="additionalNotes"
               name="additionalNotes"

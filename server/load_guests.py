@@ -55,7 +55,7 @@ GUEST_LIST = [
     {"name": "Cory Smith", "email": "", "plus_one_allowed": False, "associated_guest": "Niddhi Khara"},
     {"name": "Priti Khara", "email": "", "plus_one_allowed": False, "associated_guest": "Sage Khara"},
     {"name": "Sage Khara", "email": "", "plus_one_allowed": False, "associated_guest": "Priti Khara"},
-    {"name": "Anand Pandi", "email": "", "plus_one_allowed": False, "associated_guest": "Roopa Pandit"},
+    {"name": "Anand Pandit", "email": "", "plus_one_allowed": False, "associated_guest": "Roopa Pandit"},
     {"name": "Roopa Pandit", "email": "", "plus_one_allowed": False, "associated_guest": "Anand Pandit"},
     {"name": "Renata Hoca", "email": "", "plus_one_allowed": False, "associated_guest": "Rich Ambrosino"},
     {"name": "Rich Ambrosino", "email": "", "plus_one_allowed": False, "associated_guest": "Renata Hoca"},
