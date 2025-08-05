@@ -118,7 +118,7 @@ export default function RSVP() {
             isValid: true,
             isChecking: false,
             suggestions: [],
-            message: `Zuko found you, ${result.guest.name}!`,
+            message: `Hey ${result.guest.name}! Zuko found you!`,
             guest: result.guest
           });
           // Load existing RSVP if guest is already on the list
@@ -352,11 +352,11 @@ export default function RSVP() {
             )}
             {existingRSVP && (
               <div className="existing-rsvp-message">
-                We found your previous RSVP! You can modify your responses below.
+                This genius also found your previous RSVP! You can modify your responses below.
               </div>
             )}
             {!isNameEntered && (
-            <div className='rsvp-enter-name'>Please enter your first and last name first to continue 🥳</div>
+            <div className='rsvp-enter-name'>Please enter your first and last name first to continue 🥳 I'll make sure Zuko finds you.</div>
           )}
           </div>
 
