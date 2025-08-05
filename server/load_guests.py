@@ -126,17 +126,17 @@ def load_guests():
         for guest_data in GUEST_LIST:
             # Check if guest already exists
             existing = InvitedGuest.query.filter(
-                db.func.lower(InvitedGuest.name) == db.func.lower(guest_data["name"])
+                db.func.lower(InvitedGuest.name) == db.func.lower(guest_data['name'])
             ).first()
             
             if existing:
-                print(f"Guest {guest_data["name"]} already exists, skipping...")
+                print(f"Guest {guest_data['name']} already exists, skipping...")
                 continue
             
             # Create new guest
             guest = InvitedGuest(**guest_data)
             db.session.add(guest)
-            print(f"Added guest: {guest_data["name"]}")
+            print(f"Added guest: {guest_data['name']}")
         
         # Commit all changes
         db.session.commit()
