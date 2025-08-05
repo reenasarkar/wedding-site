@@ -24,7 +24,7 @@ GUEST_LIST = [
     {"name": "Ritu Vohra", "email": "", "plus_one_allowed": False, "associated_guest": "Rohit Vohra"},
     {"name": "Rohit Vohra", "email": "", "plus_one_allowed": False, "associated_guest": "Ritu Vohra"},
     {"name": "Teja Yeramosu", "email": "", "plus_one_allowed": True, "plus_one_name": "", "associated_guest": ""},
-    {"name": "Christina Ambrosino", "email": "", "plus_one_allowed": False, "associated_guest": ''},
+    {"name": "Christina Ambrosino", "email": "", "plus_one_allowed": False, "associated_guest": ''}
     {"name": "Testy Boobs", "email": "test@test.com", "plus_one_allowed": False, "associated_guest": "Daenerys Stormborn of the House Targaryen"},
 ]
 

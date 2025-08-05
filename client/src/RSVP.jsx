@@ -118,7 +118,7 @@ export default function RSVP() {
             isValid: true,
             isChecking: false,
             suggestions: [],
-            message: `Welcome, ${result.guest.name}!`,
+            message: `Zuko found you, ${result.guest.name}!`,
             guest: result.guest
           });
           // Load existing RSVP if guest is already on the list
@@ -131,8 +131,8 @@ export default function RSVP() {
             isChecking: false,
             suggestions: result.suggestions || [],
             message: result.suggestions && result.suggestions.length > 0 
-              ? `Hmm, couldn't find you. Did you mean ${result.suggestions.join(', ')}?`
-              : result.message || 'Name not found in guest list',
+              ? `Hmm, Zuko couldn't find you. Did you mean ${result.suggestions.join(', ')}?`
+              : result.message || 'Zuko says you are not on the guest list. Try something else. Or take it up with Reena or Varun.',
             guest: null
           });
         }
@@ -319,7 +319,8 @@ export default function RSVP() {
       <div className="rsvp-main">
         <img src={logo} className="page-app-logo" alt="logo" />
         <p className="rsvp-subtitle">Please respond by February 1st, 2026</p>
-        
+        <p className="rsvp-subtitle">For the record, <b>Reena</b> made this entire thing, if there are any bugs, please report it to her.</p>
+
         <form onSubmit={handleSubmit} className="rsvp-form">
           <div className="form-group">
             <label htmlFor="name">Full Name *</label>
@@ -333,10 +334,19 @@ export default function RSVP() {
               className="form-input"
             />
             {guestValidation.isChecking && (
-              <div className="guest-checking">Checking guest list...</div>
+              <div className="guest-checking">
+                <img src={require('./zuko-is-searching.png')} alt="Zuko searching" className="zuko-searching-image" />
+                Zuko is checking the database for ya...
+              </div>
             )}
             {guestValidation.message && !guestValidation.isChecking && (
               <div className={`guest-message ${guestValidation.isValid ? 'guest-valid' : guestValidation.suggestions.length > 0 ? 'guest-suggestions' : 'guest-invalid'}`}>
+                {guestValidation.isValid && (
+                  <img src={require('./zuko-found-you.png')} alt="Zuko found you" className="zuko-found-image" />
+                )}
+                {!guestValidation.isValid && (
+                  <img src={require('./Zuko-cant-find.png')} alt="Zuko can't find you" className="zuko-cant-find-image" />
+                )}
                 {guestValidation.message}
               </div>
             )}
