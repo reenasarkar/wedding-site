@@ -972,4 +972,23 @@
   .sumit-travel-text p {
     font-size: var(--font-size-md);
   }
+  
+  /* Schedule page mobile spacing */
+  .schedule {
+    padding: 0 var(--spacer-4);
+  }
+  
+  .schedule h1 {
+    margin-bottom: var(--spacer-4);
+  }
+  
+  .schedule-coming-soon {
+    margin-bottom: var(--spacer-4);
+    font-size: var(--font-size-xl);
+  }
+  
+  .schedule-description {
+    margin-bottom: var(--spacer-4);
+    line-height: 1.6;
+  }
 }
