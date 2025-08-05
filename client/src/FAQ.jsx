@@ -12,7 +12,20 @@ export default function FAQ() {
 
       <h1>FAQ</h1>
       
+        <p className="faq-intro">
+        <span className="reena-tooltip">Reena</span> is always updating this FAQ, so if you have more questions, feel free to ask her or <strong>her wedding planner, Amy!</strong> (or you can technically ask Varun but he's probably in the operating room so good luck with that one). 
+        <br /><br />
+        If you're a Vohra/Gupta relative, feel free to ask Ritu or Rohit, but they will probably just ask <span className="reena-tooltip">Reena</span>. 
+        <br /><br />
+        Sherry or Somu are always an option but they will probably ask <span className="reena-tooltip">Reena</span>. 
+        <br /><br />
+        So ya, Amy or <span className="reena-tooltip">Reena</span> are both good bets.
+      </p>
+      
+      <img src={require('./zuko-found-you.png')} className="zuko-party-hat" alt="Zuko with party hat" />
+      
       <div className="faq-container">
+
         <div className="faq-item">
           <h3 className="faq-question">When and where is the wedding?</h3>
           <p className="faq-answer">
@@ -23,9 +36,9 @@ export default function FAQ() {
             >
               Event Schedule
             </span>{' '}
-            page, but TLDR; our celebration takes place over two days in Big Sky, Montana, at the One & Only Moonlight Basin:
+            page. But TLDR our celebration takes place over two days (May 23 & 24, 2026) in Big Sky, Montana, at the One & Only Moonlight Basin:
             <br /><br />
-            <strong>Day 1:</strong> Welcome Party + Sangeet (casual to festive attire)
+            <strong>Day 1:</strong> Welcome Party + Sangeet (formal or Indian festive attire)
             <br />
             <strong>Day 2:</strong> Wedding Ceremony (Western-style, formal attire) + Reception (Black Tie)
           </p>

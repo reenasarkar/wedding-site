@@ -80,7 +80,13 @@ export default function Travel() {
                 </div>
               </div>
             </div>
+
+            
           </div>
+        </div>
+        
+        <div className="zuko-belly-up-section">
+          <img src={require('./zuko-belly-up.png')} className="zuko-belly-up" alt="Zuko belly up" />
         </div>
       </div>
     </div>

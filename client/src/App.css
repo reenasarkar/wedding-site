@@ -790,3 +790,85 @@
   line-height: 1.6;
   white-space: pre-line;
 }
+
+/* Bug Report Text */
+.bug-report-text {
+  font-style: italic;
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+}
+
+.bug-report-text .reena-tooltip {
+  color: var(--color-primary) !important;
+  font-weight: bold;
+  cursor: help;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  font-style: normal;
+  position: relative;
+}
+
+/* Reena Tooltip - Global styles */
+.reena-tooltip {
+  color: var(--color-primary) !important;
+  font-weight: bold;
+  cursor: help;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  position: relative;
+}
+
+/* Custom tooltip that appears instantly */
+.reena-tooltip::after {
+  content: "whatsapp +1 914-384-9556";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: normal;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  z-index: 1000;
+  margin-bottom: 5px;
+}
+
+.reena-tooltip::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  z-index: 1000;
+}
+
+.reena-tooltip:hover::after,
+.reena-tooltip:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Zuko Belly Up Image */
+.zuko-belly-up-section {
+  text-align: center;
+  margin: var(--spacer-5) 0;
+}
+
+.zuko-belly-up {
+  width: 200px;
+  height: auto;
+  border-radius: 8px;
+  margin: 0 auto;
+  display: block;
+}

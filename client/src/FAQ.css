@@ -8,9 +8,33 @@
 }
 
 .faq h1 {
-  margin-bottom: var(--spacer-5);
+  margin-bottom: var(--spacer-3);
   color: var(--color-primary);
   font-size: var(--font-size-xxxl);
+}
+
+.faq-intro {
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  margin-bottom: var(--spacer-3);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.zuko-party-hat {
+  width: 150px;
+  height: auto;
+  margin: var(--spacer-3) auto var(--spacer-5) auto;
+  display: block;
+  border-radius: 8px;
+}
+
+.reena-tooltip {
+  color: var(--color-primary) !important;
+  font-weight: bold;
+  cursor: help;
+  text-decoration: underline;
+  text-decoration-style: dotted;
 }
 
 /* FAQ Container */
