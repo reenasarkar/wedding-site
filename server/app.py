@@ -164,7 +164,7 @@ def check_guest():
         
         return jsonify({
             'is_invited': False,
-            'message': 'Name not found in guest list'
+            'message': 'Zuko says you are not on the guest list. Try something else. Or take it up with Reena or Varun.'
         })
         
     except Exception as e:
