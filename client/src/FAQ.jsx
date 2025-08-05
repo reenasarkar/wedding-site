@@ -72,6 +72,20 @@ export default function FAQ() {
         </div>
 
         <div className="faq-item">
+          <h3 className="faq-question">When should I arrive?</h3>
+          <div className="faq-answer">
+            <p>Check-in begins at 3 pm on Saturday, May 23!</p>
+          </div>
+        </div>
+
+        <div className="faq-item">
+          <h3 className="faq-question">When should I go?</h3>
+          <div className="faq-answer">
+            <p>Check out is at 12 pm on Monday, May 25!</p>
+          </div>
+        </div>
+
+        <div className="faq-item">
           <h3 className="faq-question">What's the weather like in Big Sky in late May?</h3>
           <div className="faq-answer">
             <p>Wow, great question. This is a toughie. Montana in late May is stunning, but the weather can be a little unpredictable, especially in the mountains!</p>
