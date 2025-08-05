@@ -404,6 +404,20 @@ export default function RSVP() {
             </div>
           </div>
 
+          {formData.attending === 'no' && (
+            <div className="zuko-upset-message">
+              <img src={require('./zuko-upset.png')} alt="Zuko upset" className="zuko-upset-image" />
+              ok fine. you can always change your RSVP in the future
+            </div>
+          )}
+
+          {formData.attending === 'yes' && (
+            <div className="zuko-happy-message">
+              <img src={require('./zuko-belly-up.png')} alt="Zuko happy" className="zuko-happy-image" />
+              Nice 👍👍👍👍👍 Choice 👍👍👍👍👍
+            </div>
+          )}
+
           {formData.attending === 'yes' && associatedGuestInfo() && (
             <div className="form-group">
               <p className='form-question'>Plus one?</p>
