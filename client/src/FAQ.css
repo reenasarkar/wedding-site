@@ -5,6 +5,9 @@
   padding: 0 var(--spacer-4) var(--spacer-4) var(--spacer-4);
   max-width: 900px;
   margin: 0 auto;
+  overflow-x: hidden;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .faq h1 {
@@ -224,27 +227,56 @@
 @media (max-width: 768px) {
   .faq {
     padding: 0 var(--spacer-3) var(--spacer-3) var(--spacer-3);
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
   }
   
   .faq-container {
     gap: var(--spacer-1);
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
   }
   
   .faq h1 {
     font-size: var(--font-size-xxl);
     margin-bottom: var(--spacer-1);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
   
   .faq-item {
     padding: var(--spacer-3);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
   }
   
   .faq-question {
     font-size: var(--font-size-lg);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  
+  .faq-answer {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .faq-answer p {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
   }
   
   .faq-answer ul {
     padding-left: var(--spacer-3);
+    max-width: 100%;
+    overflow-x: hidden;
   }
   
   .faq-answer ul.activities-list {
