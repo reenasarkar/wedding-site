@@ -29,7 +29,6 @@ export default function Dropdown({ options, selected, onSelect, placeholder = 'S
       className="dropdown"
       tabIndex={0}
       onBlur={handleBlur}
-      // onFocus={() => {}}
     >
       <button
         onClick={() => setIsOpen((prev) => !prev)}

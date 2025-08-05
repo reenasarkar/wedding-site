@@ -1,0 +1,149 @@
+/* FAQ Page Styles */
+
+.faq {
+  text-align: center;
+  padding: var(--spacer-4);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.faq h1 {
+  margin-bottom: var(--spacer-5);
+  color: var(--color-primary);
+  font-size: var(--font-size-xxxl);
+}
+
+/* FAQ Container */
+.faq-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.faq-item {
+  padding: var(--spacer-1);
+}
+
+/* FAQ Questions */
+.faq-question {
+  color: var(--color-primary);
+  font-size: var(--font-size-xxl);
+  margin-bottom: var(--spacer-3);
+  font-weight: 600;
+  text-align: left;
+}
+
+/* FAQ Answers */
+.faq-answer {
+  font-size: var(--font-size-md);
+  line-height: 1.6;
+  color: var(--color-text);
+  text-align: left;
+}
+
+.faq-answer p {
+  margin-bottom: var(--spacer-3);
+}
+
+.faq-answer p:last-child {
+  margin-bottom: 0;
+}
+
+/* Lists */
+.faq-answer ul {
+  margin: var(--spacer-3) 0;
+  padding-left: var(--spacer-5);
+}
+
+.faq-answer ul.activities-list {
+  padding-left: 80px;
+}
+
+.faq-answer li {
+  margin-bottom: var(--spacer-2);
+  text-align: left;
+}
+
+/* Links and Interactive Elements */
+.faq-answer a {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.faq-answer a:hover {
+  opacity: 0.8;
+}
+
+.faq-answer span {
+  transition: opacity 0.2s ease;
+}
+
+.faq-answer span:hover {
+  opacity: 0.8;
+}
+
+.faq-link {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.faq-link:hover {
+  opacity: 0.8;
+}
+
+/* Weather Button */
+.faq-weather-button {
+  display: inline-block;
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 600;
+  padding: var(--spacer-2) var(--spacer-4);
+  border: 2px solid var(--color-primary);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  margin-top: var(--spacer-2);
+  font-size: var(--font-size-sm);
+}
+
+.faq-weather-button:hover {
+  background-color: var(--color-primary);
+  color: white;
+  text-decoration: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .faq {
+    padding: var(--spacer-3);
+  }
+  
+  .faq-container {
+    gap: var(--spacer-1);
+  }
+  
+  .faq h1 {
+    font-size: var(--font-size-xxl);
+    margin-bottom: var(--spacer-1);
+  }
+  
+  .faq-item {
+    padding: var(--spacer-3);
+  }
+  
+  .faq-question {
+    font-size: var(--font-size-lg);
+  }
+  
+  .faq-answer ul {
+    padding-left: var(--spacer-3);
+  }
+  
+  .faq-answer ul.activities-list {
+    padding-left: var(--spacer-4);
+  }
+}

@@ -285,7 +285,7 @@ export default function RSVP() {
     if (guest.plus_one_allowed) {
       return "You do have a plus one! If you'd like to bring someone, let's get their info.";
     } else if (guest.associated_guest) {
-      return `You don't have a plus one, but you are associated with ${guest.associated_guest}`;
+      return `You don't have a plus one, but you are associated with ${guest.associated_guest}. They will need to RSVP separately.`;
     } else {
       return "You don't have a plus one. If you think you should have one, take it up with Reena or Varun";
     }

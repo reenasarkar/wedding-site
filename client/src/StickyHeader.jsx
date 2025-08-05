@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
+import { useRVWedding } from './RVWeddingContext';
 import './StickyHeader.css';
 
-export default function StickyHeader({ onNavigate }) {
+export default function StickyHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { handleNavigation } = useRVWedding();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
   const handleNavClick = (pageKey) => {
-    if (onNavigate) {
-      onNavigate(pageKey);
-    }
+    handleNavigation(pageKey);
     setIsMenuOpen(false);
   };
 
