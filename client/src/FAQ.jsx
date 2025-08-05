@@ -38,9 +38,11 @@ export default function FAQ() {
             </span>{' '}
             page. But TLDR our celebration takes place over two days (May 23 & 24, 2026) in Big Sky, Montana, at the One & Only Moonlight Basin:
             <br /><br />
-            <strong>Day 1:</strong> Welcome Party + Sangeet (formal or Indian festive attire)
+            <strong>Day 1 (5/23):</strong> Welcome Party & Sangeet (formal or Indian festive attire)
             <br />
-            <strong>Day 2:</strong> Wedding Ceremony (Western-style, formal attire) + Reception (Black Tie)
+            <strong>Day 2 (5/24):</strong> Wedding Ceremony (Western-style, formal attire) + Reception (Black Tie)
+            <br />
+            <strong>Day 3 (5/25):</strong> Breakfast (Relaxed attire) + Checkout
           </p>
         </div>
 

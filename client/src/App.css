@@ -87,6 +87,17 @@
 
 /* Mobile optimization for Home page */
 @media (max-width: 768px) {
+  .home {
+    width: 100%;
+    overflow-x: hidden;
+  }
+  
+  .home-header {
+    padding: var(--spacer-2);
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
   .home-title {
     font-size: var(--font-size-xxl);
     margin-bottom: var(--spacer-2);
@@ -97,6 +108,7 @@
     font-size: var(--font-size-md);
     padding: 0 var(--spacer-2);
     margin-top: var(--spacer-2);
+    max-width: 100%;
   }
   
   .app-logo {
@@ -104,9 +116,19 @@
     max-height: 200px;
     margin-bottom: var(--spacer-1);
   }
+  
+  .bug-report-text {
+    padding: 0 var(--spacer-2);
+    max-width: 100%;
+    font-size: var(--font-size-xs);
+  }
 }
 
 @media (max-width: 480px) {
+  .home-header {
+    padding: var(--spacer-1);
+  }
+  
   .home-title {
     font-size: var(--font-size-lg);
     margin-bottom: var(--spacer-1);
@@ -124,26 +146,41 @@
     max-height: 180px;
     margin-bottom: var(--spacer-1);
   }
+  
+  .bug-report-text {
+    padding: 0 var(--spacer-1);
+    font-size: var(--font-size-xs);
+  }
 }
 
 /* iPhone 16 Pro specific optimizations */
 @media (max-width: 430px) {
+  .home-header {
+    padding: var(--spacer-1);
+  }
+  
   .home-title {
-    font-size: var(--font-size-xxl);
-    margin-bottom: var(--spacer-2);
-    margin-top: var(--spacer-2);
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacer-1);
+    margin-top: var(--spacer-1);
   }
   
   .home-date {
-    font-size: var(--font-size-md);
-    padding: 0 var(--spacer-2);
-    margin-top: var(--spacer-2);
+    font-size: var(--font-size-sm);
+    padding: 0 var(--spacer-1);
+    margin-top: var(--spacer-1);
   }
   
   .app-logo {
-    height: 45vmin;
+    height: 40vmin;
     max-height: 150px;
     margin-bottom: var(--spacer-1);
+  }
+  
+  .bug-report-text {
+    padding: 0 var(--spacer-1);
+    font-size: var(--font-size-xs);
+    line-height: 1.4;
   }
 }
 
@@ -796,6 +833,11 @@
   font-style: italic;
   font-size: var(--font-size-sm);
   color: var(--color-text);
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 var(--spacer-3);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .bug-report-text .reena-tooltip {

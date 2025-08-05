@@ -375,7 +375,7 @@ export default function RSVP() {
           </div>
 
           <div className="form-group">
-            <p className='form-question'>Will you be attending? *</p>
+            <p className='form-question'>Will you be attending? (You can always change your answer later!) * </p>
             <div className="radio-group">
               <label className="radio-label">
                 <input
