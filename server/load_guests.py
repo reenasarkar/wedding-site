@@ -113,6 +113,7 @@ GUEST_LIST = [
     {"name": "Vandana Verma", "email": "", "plus_one_allowed": False, "associated_guest": "Vivek Verma"},
     {"name": "Vivek Verma", "email": "", "plus_one_allowed": False, "associated_guest": "Vandana Verma"},
     {"name": "Shiva Sood", "email": "", "plus_one_allowed": False, "associated_guest": ""},
+    {"name": "Alvin Modin", "email": "", "plus_one_allowed": True, "associated_guest": ""},
     {"name": "Testy Boobs", "email": "test@test.com", "plus_one_allowed": False, "associated_guest": "Daenerys Stormborn of the House Targaryen"},
 ]
 
