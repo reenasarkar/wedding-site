@@ -123,7 +123,7 @@ export default function FAQ() {
         <div className="faq-item">
           <h3 className="faq-question">Are kids invited?</h3>
           <p className="faq-answer">
-            Sorry - no kids 😭😭 Unless your name is Anjali Bose, Oyon Guha, Aaruv/Adit or Shivang Gupta, in which case you are good and are basically a teenager. 
+            Sorry - no kids 😭😭 Unless your name is Anjali Bose, Oyon Guha, Aarav/Adit Gupta, or Shivang Gupta, in which case you are good and are basically a teenager. 
             <br />
             Or if Reena or Varun specifically told you to ignore this kid clause.
           </p>  
