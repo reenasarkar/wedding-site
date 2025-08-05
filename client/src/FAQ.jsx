@@ -163,6 +163,19 @@ export default function FAQ() {
         </div>
         </div>
 
+        <div className="faq-item">
+          <h3 className="faq-question">I want to contact Varun, how can I do that?</h3>
+          <div className="faq-answer">
+            <div className="varun-contact-container">
+              <img src={require('./varun-mich.png')} className="varun-mich-image" alt="Varun with Mich" />
+              <div className="varun-contact-text">
+                <p>I love your enthusiasm! Please wait 3-5 business days. He is available at +1 901-497-7996. Also vrnvhr22@gmail.com.</p>
+              </div>
+              <img src={require('./reena-varun.png')} className="reena-varun-image" alt="Reena and Varun" />
+            </div>
+          </div>
+        </div>
+
     </div>
   )
 }
