@@ -633,42 +633,38 @@
 
 .zuko-upset-message {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: var(--spacer-1);
-  margin-top: var(--spacer-2);
-  padding: var(--spacer-2);
-  background-color: var(--color-muted);
-  border-radius: var(--border-radius);
-  border-left: 3px solid var(--color-accent);
+  gap: var(--spacer-2);
+  margin-top: var(--spacer-3);
+  text-align: center;
   font-size: var(--font-size-sm);
   color: var(--color-accent);
   font-style: italic;
 }
 
 .zuko-upset-image {
-  width: 48px;
-  height: 48px;
+  width: 80px;
+  height: 80px;
   object-fit: contain;
   animation: upset-bounce 1.5s ease-in-out infinite;
 }
 
 .zuko-happy-message {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: var(--spacer-1);
-  margin-top: var(--spacer-2);
-  padding: var(--spacer-2);
-  background-color: var(--color-muted);
-  border-radius: var(--border-radius);
-  border-left: 3px solid var(--color-primary);
+  gap: var(--spacer-2);
+  margin-top: var(--spacer-3);
+  text-align: center;
   font-size: var(--font-size-sm);
   color: var(--color-primary);
   font-weight: bold;
 }
 
 .zuko-happy-image {
-  width: 48px;
-  height: 48px;
+  width: 80px;
+  height: 80px;
   object-fit: contain;
   animation: happy-wiggle 1s ease-in-out infinite;
 }
