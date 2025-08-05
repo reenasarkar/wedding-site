@@ -19,7 +19,7 @@ export default function Travel() {
           <div className="sumit-travel-container">
             <img src={require('./sumit-happy-chips.png')} className="sumit-travel-image" alt="Sumit with chips" />
             <div className="sumit-travel-text">
-              <p>You can also ask Sumit Sarkar for more One & Only info at +1 917-602-8284</p>
+              <p>You can also ask <span className="sumit-tooltip">Sumit Sarkar</span> for more One & Only info 👍👍</p>
             </div>
           </div>
         </div>

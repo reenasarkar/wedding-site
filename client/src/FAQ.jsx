@@ -32,7 +32,7 @@ export default function FAQ() {
             <div className="sumit-contact-container">
               <img src={require('./sumit-happy-chips.png')} className="sumit-chips-image" alt="Sumit with chips" />
               <div className="sumit-contact-text">
-                <p>Ahh, you're an inquisitive fellow! That's a question for Sumit Sarkar. You can contact him at +1 917-602-8284. He prefers iMessage but WhatsApp is also possible.</p>
+                <p>Ahh, you're an inquisitive fellow! That's a question for <span className="sumit-tooltip">Sumit Sarkar</span>. You can contact him at +1 917-602-8284. He prefers iMessage but WhatsApp is also possible.</p>
               </div>
             </div>
           </div>
@@ -156,7 +156,7 @@ export default function FAQ() {
       <div className="faq-item">
         <h3 className="faq-question">What else can I do in Big Sky?</h3>
         <div className="faq-answer">
-          <p>Lots of fun outdoor things to do in Big Sky!</p>
+          <p>Lots of fun outdoor things to do in Big Sky! <span className="sumit-tooltip">Sumit</span> has an entire list of recs.</p>
           
           <p>My personal rec is to take a day trip to <strong>Yellowstone National Park</strong>. Located just 1 hour and 15 minutes from Big Sky, the park's West Entrance offers an unforgettable experience. As the first national park in the world, it’s absolutely worth a visit if you have time before or after the wedding.</p>
 
