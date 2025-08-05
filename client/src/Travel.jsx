@@ -15,6 +15,15 @@ export default function Travel() {
           Nestled in the Montana Rockies, One & Only Moonlight Basin is a stunning mountain retreat where luxury meets nature.
         </p>
 
+        <div className="sumit-contact-section">
+          <div className="sumit-travel-container">
+            <img src={require('./sumit-happy-chips.png')} className="sumit-travel-image" alt="Sumit with chips" />
+            <div className="sumit-travel-text">
+              <p>You can also ask Sumit Sarkar for more One & Only info at +1 917-602-8284</p>
+            </div>
+          </div>
+        </div>
+
         <div className="hotel-link-section">
           <a 
             href="https://www.oneandonlyresorts.com/moonlight-basin" 
@@ -65,7 +74,7 @@ export default function Travel() {
             <div className="transportation-info">
               <div className="transport-options">
                 <div className="transport-option">
-                  <h4>Uber and Lyft </h4>
+                  <h4>Uber and Lyft</h4>
                   <p>Lots of rideshare options are readily available in the area. You can easily book rides to and from the venue.</p>
                 </div>
                 

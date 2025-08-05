@@ -27,6 +27,18 @@ export default function FAQ() {
       <div className="faq-container">
 
         <div className="faq-item">
+        <h3 className="faq-question">I have so many questions about One & Only, not just the Montana location but also about the numerous other locations, like the one in Montenegro!</h3>
+          <div className="faq-answer">
+            <div className="sumit-contact-container">
+              <img src={require('./sumit-happy-chips.png')} className="sumit-chips-image" alt="Sumit with chips" />
+              <div className="sumit-contact-text">
+                <p>Ahh, you're an inquisitive fellow! That's a question for Sumit Sarkar. You can contact him at +1 917-602-8284. He prefers iMessage but WhatsApp is also possible.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div className="faq-item">
           <h3 className="faq-question">When and where is the wedding?</h3>
           <p className="faq-answer">
             Full schedule is on the{' '}

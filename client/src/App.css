@@ -917,3 +917,59 @@
   margin: 0 auto;
   display: block;
 }
+
+/* Sumit contact section for Travel page */
+.sumit-contact-section {
+  margin: var(--spacer-5) 0;
+  padding: var(--spacer-4);
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.sumit-travel-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacer-4);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.sumit-travel-image {
+  width: 120px;
+  height: auto;
+  flex-shrink: 0;
+  border-radius: 8px;
+}
+
+.sumit-travel-text {
+  flex: 1;
+  text-align: left;
+}
+
+.sumit-travel-text p {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  color: var(--color-text);
+}
+
+/* Mobile responsiveness for Sumit travel contact */
+@media (max-width: 768px) {
+  .sumit-travel-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .sumit-travel-image {
+    width: 100px;
+  }
+  
+  .sumit-travel-text {
+    text-align: center;
+  }
+  
+  .sumit-travel-text p {
+    font-size: var(--font-size-md);
+  }
+}
