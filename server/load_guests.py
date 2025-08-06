@@ -45,7 +45,6 @@ GUEST_LIST = [
     {"name": "Ishani Guha", "email": "", "plus_one_allowed": False, "associated_guest": "Tukun Guha"},
     {"name": "Tukun Guha", "email": "", "plus_one_allowed": False, "associated_guest": "Ishani Guha"},
     {"name": "Melanie Santos", "email": "", "plus_one_allowed": False, "associated_guest": "Rahul Bose"},
-    {"name": "Cozy Sarkar", "email": "", "plus_one_allowed": False, "associated_guest": "Shawn"},
     {"name": "Shawn Sarkar", "email": "", "plus_one_allowed": False, "associated_guest": "Cozy"},
     {"name": "Riddhi Khara", "email": "", "plus_one_allowed": False, "associated_guest": "Kunal Khandakar"},
     {"name": "Kunal Khandakar", "email": "", "plus_one_allowed": False, "associated_guest": "Riddhi Khara"},
@@ -117,6 +116,10 @@ GUEST_LIST = [
     {"name": "Alvin Modin", "email": "", "plus_one_allowed": True, "associated_guest": ""},
     {"name": "Jay Gorsia", "email": "", "plus_one_allowed": False, "associated_guest": ""},
     {"name": "Jay Chen", "email": "", "plus_one_allowed": False, "associated_guest": ""},
+    {"name": "Cosi Sarkar", "email": "", "plus_one_allowed": False, "associated_guest": "Shaun Butler"},
+    {"name": "Shaun Butler", "email": "", "plus_one_allowed": False, "associated_guest": "Cosi Sarkar"},
+    {"name": "Nova Sarkar", "email": "", "plus_one_allowed": False, "associated_guest": "Colin Lee"},
+    {"name": "Colin Lee", "email": "", "plus_one_allowed": False, "associated_guest": "Nova Sarkar"},
     {"name": "Testy Boobs", "email": "test@test.com", "plus_one_allowed": False, "associated_guest": "Daenerys Stormborn of the House Targaryen"},
 ]
 
