@@ -28,6 +28,7 @@ GUEST_LIST = [
     {"name": "Jeff Drake", "email": "", "plus_one_allowed": False, "associated_guest": "Eva Drake"},
     {"name": "John Drake", "email": "", "plus_one_allowed": False, "associated_guest": "Eva Drake"},
     {"name": "Mo Krishnan", "email": "", "plus_one_allowed": False, "associated_guest": "Shoba Krishnan"},
+    {"name": "Shoba Krishnan", "email": "", "plus_one_allowed": False, "associated_guest": "Mo Krishnan"},
     {"name": "Ujj Nath", "email": "", "plus_one_allowed": False, "associated_guest": "Mamta Nath"},
     {"name": "Mamta Nath", "email": "", "plus_one_allowed": False, "associated_guest": "Ujj Nath"},
     {"name": "Candy Huang", "email": "", "plus_one_allowed": False, "associated_guest": "Nai Nai Huang"},
