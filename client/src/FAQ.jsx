@@ -61,13 +61,13 @@ export default function FAQ() {
         <div className="faq-item">
           <h3 className="faq-question">Where should I stay?</h3>
           <p className="faq-answer">
-            Everyone is staying at the One & Only Moonlight Basin. Details on{' '}
+            Lodging will be provided at{' '}
             <span 
               className="faq-link"
               onClick={() => handleNavigation('travel')}
             >
-              Travel & Stay
-            </span>
+              One & Only Moonlight Basin
+            </span>. Just show up, everything else is set!
           </p>
         </div>
 
