@@ -56,6 +56,11 @@ export default function Travel() {
             Jack Creek Rd<br />
             Big Sky, MT 59716
           </p>
+
+          <p className="map-description">
+            You should fly into <strong>Bozeman Yellowstone International Airport</strong>.
+          </p>
+
         </div>
 
         <div className="directions-section">

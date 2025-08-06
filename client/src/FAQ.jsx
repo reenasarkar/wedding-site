@@ -25,7 +25,6 @@ export default function FAQ() {
       <img src={require('./zuko-found-you.png')} className="zuko-party-hat" alt="Zuko with party hat" />
       
       <div className="faq-container">
-
         <div className="faq-item">
         <h3 className="faq-question">I have so many questions about One & Only, not just the Montana location but also about the numerous other locations, like the one in Montenegro!</h3>
           <div className="faq-answer">
@@ -36,6 +35,19 @@ export default function FAQ() {
               </div>
             </div>
           </div>
+        </div>
+
+        <div className="faq-item">
+          <h3 className="faq-question">Where should I stay?</h3>
+          <p className="faq-answer">
+            Lodging will be provided at{' '}
+            <span 
+              className="faq-link"
+              onClick={() => handleNavigation('travel')}
+            >
+              One & Only Moonlight Basin
+            </span>. Just show up, everything else is set!
+          </p>
         </div>
         
         <div className="faq-item">
@@ -55,19 +67,6 @@ export default function FAQ() {
             <strong>Day 2 (5/24):</strong> Wedding Ceremony (Western-style, formal attire) + Reception (Black Tie)
             <br />
             <strong>Day 3 (5/25):</strong> Breakfast (Relaxed attire) + Checkout
-          </p>
-        </div>
-
-        <div className="faq-item">
-          <h3 className="faq-question">Where should I stay?</h3>
-          <p className="faq-answer">
-            Lodging will be provided at{' '}
-            <span 
-              className="faq-link"
-              onClick={() => handleNavigation('travel')}
-            >
-              One & Only Moonlight Basin
-            </span>. Just show up, everything else is set!
           </p>
         </div>
 
