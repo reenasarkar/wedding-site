@@ -957,6 +957,30 @@
 
 
 
+/* Correction Note Styling */
+.correction-note {
+  color: #d97757;
+  font-weight: bold;
+}
+
+/* Goofy Text Styling */
+.goofy-text {
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: rainbow-flow 3s ease-in-out infinite;
+  font-weight: bold;
+  font-style: italic;
+  text-shadow: 0 0 10px rgba(255, 107, 107, 0.3);
+}
+
+@keyframes rainbow-flow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
 /* Zuko Belly Up Image */
 .zuko-belly-up-section {
   text-align: center;

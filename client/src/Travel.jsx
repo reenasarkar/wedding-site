@@ -58,7 +58,7 @@ export default function Travel() {
           </p>
 
           <p className="map-description">
-            You should fly into <strong>Bozeman Yellowstone International Airport</strong>.
+            You should fly into <strong>Bozeman Yellowstone International Airport (BZN)</strong>.
           </p>
 
         </div>
@@ -80,17 +80,19 @@ export default function Travel() {
               <div className="transport-options">
                 <div className="transport-option">
                   <h4>Uber and Lyft</h4>
-                  <p>Lots of rideshare options are readily available in the area. You can easily book rides to and from the venue.</p>
+                  <p><del>Lots of rideshare options are readily available in the area. You can easily book rides to and from the venue.</del> <strong className="correction-note"> This was actually wrong information</strong></p>
+                  <p>If you plan on coming in with a group of people there's some group transport options - feel free to call/book ahead to <strong>Karst Stage</strong> or <strong>Mountain Transport</strong> to schedule pick-ups, if you wanted to be <span className="goofy-text">extra savvy and type A</span> right now. </p> 
+                  <p>But we are also making it more of a priority right now to figure out shuttling everyone to the venue from BZN</p>
                 </div>
                 
                 <div className="transport-option">
                   <h4>Shuttle Service</h4>
-                  <p>We're working on arranging shuttle service for our guests. TBD. Lets see</p>
+                  <p>We're working on arranging shuttle service for our guests. TBD. </p>
                 </div>
                 
                 <div className="transport-option">
                   <h4>Rental Car</h4>
-                  <p>I'd not suggest this, unless you're planning on staying a longer amount of time or visiting yellowstone or something.</p>
+                  <p>One & Only has limited parking space, so if you choose to rent a car, please let <span className="reena-tooltip">Reena</span> know ahead of time so she can let them know 🥳 If you're planning on staying a longer amount of time, like to visit Yellowstone or something, you'll definetly need a car to drive away from the venue. If you're here just for the wedding, you can probably skip getting a car.</p>
                 </div>
               </div>
             </div>
