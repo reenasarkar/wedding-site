@@ -121,6 +121,11 @@ GUEST_LIST = [
     {"name": "Shaun Butler", "email": "", "plus_one_allowed": False, "associated_guest": "Cosi Sarkar"},
     {"name": "Nova Sarkar", "email": "", "plus_one_allowed": False, "associated_guest": "Colin Lee"},
     {"name": "Colin Lee", "email": "", "plus_one_allowed": False, "associated_guest": "Nova Sarkar"},
+    {"name": "Sarah Wilkins", "email": "", "plus_one_allowed": False, "associated_guest": "Harry Kane ⚽️"},
+    {"name": "Harry Kane", "email": "", "plus_one_allowed": False, "associated_guest": "Sarah Wilkins 🔪👂🏽👃🏽👩🏽‍🦲🔪"},
+    {"name": "Iulia Tapescu", "email": "", "plus_one_allowed": True, "associated_guest": ""},
+    {"name": "Caleb Allred", "email": "", "plus_one_allowed": True, "associated_guest": ""},
+    {"name": "Zainab Balogun", "email": "", "plus_one_allowed": True, "associated_guest": ""},
     {"name": "Testy Boobs", "email": "test@test.com", "plus_one_allowed": False, "associated_guest": "Daenerys Stormborn of the House Targaryen"},
 ]
 

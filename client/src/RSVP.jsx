@@ -54,7 +54,7 @@ export default function RSVP() {
           setFormData({
             name: result.rsvp.name,
             email: result.rsvp.email,
-            attending: result.rsvp.attending ? 'yes' : 'no',
+            attending: result.rsvp.attending === null ? 'maybe' : (result.rsvp.attending ? 'yes' : 'no'),
             events: {
               welcomeDinner: result.rsvp.welcome_dinner,
               ceremony: result.rsvp.ceremony,
@@ -223,12 +223,18 @@ export default function RSVP() {
     e.preventDefault();
     
     try {
+      // Convert 'maybe' to null for backend storage
+      const submissionData = {
+        ...formData,
+        attending: formData.attending === 'maybe' ? null : formData.attending
+      };
+      
       const response = await fetch('/api/rsvp', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(submissionData),
       });
       
       if (response.ok) {
@@ -393,6 +399,18 @@ export default function RSVP() {
                 <input
                   type="radio"
                   name="attending"
+                  value="maybe"
+                  checked={formData.attending === 'maybe'}
+                  onChange={handleInputChange}
+                  required
+                  disabled={!isFormEnabled}
+                />
+                <span>Maybe, still deciding</span>
+              </label>
+              <label className="radio-label">
+                <input
+                  type="radio"
+                  name="attending"
                   value="no"
                   checked={formData.attending === 'no'}
                   onChange={handleInputChange}
@@ -418,7 +436,14 @@ export default function RSVP() {
             </div>
           )}
 
-          {formData.attending === 'yes' && associatedGuestInfo() && (
+          {formData.attending === 'maybe' && (
+            <div className="zuko-happy-message">
+              <img src={require('./zuko-belly-up.png')} alt="Zuko happy" className="zuko-happy-image" />
+              Ok, no pressure! Fill out what you can for now 👍 Especially if you're a medical resident, I'm giving you a super pass 🎟️ Don't forget to click Submit RSVP!
+            </div>
+          )}
+
+          {(formData.attending === 'yes' || formData.attending === 'maybe') && associatedGuestInfo() && (
             <div className="form-group">
               <p className='form-question'>Plus one?</p>
               <div className="associated-guest-info">
@@ -457,7 +482,7 @@ export default function RSVP() {
             </div>
           )}
 
-          {formData.attending === 'yes' && (
+          {(formData.attending === 'yes' || formData.attending === 'maybe') && (
             <>
               <div className="form-group">
                 <p className='form-question'>Which events will you attend? *</p>
