@@ -1,5 +1,6 @@
 from flask import Flask, send_from_directory, jsonify, request
 from flask_cors import CORS
+from functools import wraps
 import os
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
@@ -21,6 +22,16 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # Initialize database
 db.init_app(app)
 
+# ── API Key Auth ──────────────────────────────────────────────────────────────
+def api_key_required(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        api_key = request.headers.get('x-api-key') or request.args.get('api_key')
+        if not os.environ.get('API_KEY') or api_key != os.environ.get('API_KEY'):
+            return jsonify({'error': 'Unauthorized'}), 401
+        return f(*args, **kwargs)
+    return decorated
+
 @app.route("/api/hello")
 def hello():
     return jsonify(message="Hello from Flask!")
@@ -38,16 +49,16 @@ except Exception as e:
 def submit_rsvp():
     try:
         data = request.get_json()
-        
+
         # Validate required fields
         if not data.get('name') or not data.get('email') or data.get('attending') is None:
             return jsonify({'error': 'Name, email, and attendance status are required'}), 400
-        
+
         # Check if RSVP already exists for this guest
         existing_rsvp = RSVP.query.filter(
             db.func.lower(RSVP.name) == db.func.lower(data['name'])
         ).order_by(RSVP.created_at.desc()).first()
-        
+
         if existing_rsvp:
             # Update existing RSVP
             existing_rsvp.email = data['email']
@@ -60,9 +71,9 @@ def submit_rsvp():
             existing_rsvp.plus_one_name = data.get('plusOneName', '')
             existing_rsvp.plus_one_email = data.get('plusOneEmail', '')
             existing_rsvp.updated_at = datetime.utcnow()
-            
+
             db.session.commit()
-            
+
             return jsonify({
                 'message': 'RSVP updated successfully',
                 'rsvp': existing_rsvp.to_dict()
@@ -81,15 +92,15 @@ def submit_rsvp():
                 plus_one_name=data.get('plusOneName', ''),
                 plus_one_email=data.get('plusOneEmail', '')
             )
-            
+
             db.session.add(rsvp)
             db.session.commit()
-            
+
             return jsonify({
                 'message': 'RSVP submitted successfully',
                 'rsvp': rsvp.to_dict()
             }), 201
-        
+
     except Exception as e:
         db.session.rollback()
         return jsonify({'error': str(e)}), 500
@@ -114,7 +125,7 @@ def get_rsvp_by_guest(guest_name):
         rsvp = RSVP.query.filter(
             db.func.lower(RSVP.name) == db.func.lower(guest_name)
         ).order_by(RSVP.created_at.desc()).first()
-        
+
         if rsvp:
             return jsonify({
                 'found': True,
@@ -125,7 +136,7 @@ def get_rsvp_by_guest(guest_name):
                 'found': False,
                 'message': 'No RSVP found for this guest'
             })
-            
+
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
@@ -135,87 +146,159 @@ def check_guest():
     try:
         data = request.get_json()
         name = data.get('name', '').strip()
-        
+
         if not name:
             return jsonify({'error': 'Name is required'}), 400
-        
+
         # Search for exact match first
         guest = InvitedGuest.query.filter(
             db.func.lower(InvitedGuest.name) == db.func.lower(name)
         ).first()
-        
+
         if guest:
             return jsonify({
                 'is_invited': True,
                 'guest': guest.to_dict()
             })
-        
+
         # If no exact match, search for partial matches
         partial_matches = InvitedGuest.query.filter(
             db.func.lower(InvitedGuest.name).contains(db.func.lower(name))
         ).limit(5).all()
-        
+
         if partial_matches:
             return jsonify({
                 'is_invited': False,
                 'suggestions': [g.name for g in partial_matches],
                 'message': 'Name not found. Did you mean one of these?'
             })
-        
+
         return jsonify({
             'is_invited': False,
             'message': 'Zuko says you are not on the guest list. Try something else. Or take it up with Reena or Varun.'
         })
-        
+
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-# Admin endpoint to add invited guests (for you to pre-load the list)
+# ── Admin endpoints (API key required) ───────────────────────────────────────
+
+# Add one or many invited guests
+# Accepts a single object or an array of objects
 @app.route("/api/admin/add-guest", methods=["POST"])
+@api_key_required
 def add_invited_guest():
     try:
         data = request.get_json()
-        
-        # Validate required fields
-        if not data.get('name'):
-            return jsonify({'error': 'Name is required'}), 400
-        
-        # Check if guest already exists
-        existing_guest = InvitedGuest.query.filter(
-            db.func.lower(InvitedGuest.name) == db.func.lower(data['name'])
-        ).first()
-        
-        if existing_guest:
-            return jsonify({'error': 'Guest already exists'}), 400
-        
-        # Create new invited guest
-        guest = InvitedGuest(
-            name=data['name'],
-            email=data.get('email'),
-            plus_one_allowed=data.get('plus_one_allowed', False),
-            plus_one_name=data.get('plus_one_name')
-        )
-        
-        db.session.add(guest)
+        guests_data = data if isinstance(data, list) else [data]
+        added = []
+        skipped = []
+
+        for item in guests_data:
+            if not item.get('name'):
+                skipped.append({'item': item, 'reason': 'Name is required'})
+                continue
+
+            existing_guest = InvitedGuest.query.filter(
+                db.func.lower(InvitedGuest.name) == db.func.lower(item['name'])
+            ).first()
+
+            if existing_guest:
+                skipped.append({'name': item['name'], 'reason': 'Already exists'})
+                continue
+
+            guest = InvitedGuest(
+                name=item['name'],
+                email=item.get('email'),
+                plus_one_allowed=item.get('plus_one_allowed', False),
+                plus_one_name=item.get('plus_one_name'),
+                associated_guest=item.get('associated_guest')
+            )
+            db.session.add(guest)
+            added.append(item['name'])
+
         db.session.commit()
-        
+
         return jsonify({
-            'message': 'Guest added successfully',
-            'guest': guest.to_dict()
+            'message': f"{len(added)} guest(s) added, {len(skipped)} skipped.",
+            'added': added,
+            'skipped': skipped
         }), 201
-        
+
     except Exception as e:
         db.session.rollback()
         return jsonify({'error': str(e)}), 500
 
-# Admin endpoint to get all invited guests
+# Get all invited guests
 @app.route("/api/admin/guests", methods=["GET"])
+@api_key_required
 def get_invited_guests():
     try:
         guests = InvitedGuest.query.order_by(InvitedGuest.name).all()
         return jsonify({
             'guests': [guest.to_dict() for guest in guests],
             'total': len(guests)
+        })
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+# Delete a guest by ID
+@app.route("/api/admin/guests/<int:guest_id>", methods=["DELETE"])
+@api_key_required
+def delete_invited_guest(guest_id):
+    try:
+        guest = InvitedGuest.query.get(guest_id)
+        if not guest:
+            return jsonify({'error': 'Guest not found'}), 404
+        db.session.delete(guest)
+        db.session.commit()
+        return jsonify({'message': f"'{guest.name}' removed from guest list."})
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'error': str(e)}), 500
+
+# Summary — clean RSVP overview for Reena
+@app.route("/api/admin/summary", methods=["GET"])
+@api_key_required
+def summary():
+    try:
+        all_rsvps = RSVP.query.all()
+        attending     = [r for r in all_rsvps if r.attending]
+        not_attending = [r for r in all_rsvps if not r.attending]
+        pending_names = []
+
+        all_guests = InvitedGuest.query.order_by(InvitedGuest.name).all()
+        rsvp_names_lower = {r.name.lower() for r in all_rsvps}
+        for g in all_guests:
+            if g.name.lower() not in rsvp_names_lower:
+                pending_names.append(g.name)
+
+        dietary = [
+            {'name': r.name, 'restrictions': r.dietary_restrictions}
+            for r in attending if r.dietary_restrictions
+        ]
+
+        plus_ones = [
+            {'guest': r.name, 'plus_one': r.plus_one_name}
+            for r in attending if r.plus_one_name
+        ]
+
+        return jsonify({
+            'summary': {
+                'total_invited':   len(all_guests),
+                'total_rsvps':     len(all_rsvps),
+                'attending':       len(attending),
+                'not_attending':   len(not_attending),
+                'no_response_yet': len(pending_names),
+            },
+            'events': {
+                'welcome_dinner': len([r for r in attending if r.welcome_dinner]),
+                'ceremony':       len([r for r in attending if r.ceremony]),
+                'reception':      len([r for r in attending if r.reception]),
+            },
+            'plus_ones':         plus_ones,
+            'dietary_needs':     dietary,
+            'no_response_yet':   pending_names,
         })
     except Exception as e:
         return jsonify({'error': str(e)}), 500
