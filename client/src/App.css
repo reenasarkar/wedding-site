@@ -1031,41 +1031,162 @@
   color: var(--color-text);
 }
 
+/* Schedule page */
+.schedule-main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+  text-align: left;
+}
+
+.schedule-intro {
+  text-align: center;
+  font-size: var(--font-size-lg);
+  color: var(--color-text);
+  line-height: 1.8;
+  margin-bottom: var(--spacer-5);
+}
+
+.schedule-day {
+  background-color: rgba(157, 180, 172, 0.1);
+  border-radius: 12px;
+  padding: var(--spacer-5) var(--spacer-4);
+  margin-bottom: var(--spacer-5);
+}
+
+.schedule-day h2 {
+  color: var(--color-primary);
+  font-size: var(--font-size-xxl);
+  margin: 0 0 var(--spacer-2) 0;
+  text-align: center;
+}
+
+.schedule-day-subtitle {
+  text-align: center;
+  color: var(--color-text);
+  font-size: var(--font-size-lg);
+  margin: 0 0 var(--spacer-4) 0;
+  font-style: italic;
+}
+
+.schedule-event {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacer-3);
+  padding: var(--spacer-3) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.schedule-event:last-of-type {
+  border-bottom: none;
+}
+
+.schedule-event-time {
+  font-weight: bold;
+  color: var(--color-primary);
+  font-size: var(--font-size-md);
+  min-width: 160px;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.schedule-event-details {
+  flex: 1;
+}
+
+.schedule-event-name {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.schedule-event-description {
+  margin: var(--spacer-1) 0 0 0;
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+.schedule-style-guide {
+  margin-top: var(--spacer-4);
+  padding: var(--spacer-4);
+  background-color: rgba(84, 114, 111, 0.08);
+  border-radius: 8px;
+}
+
+.schedule-style-guide h3 {
+  color: var(--color-primary);
+  font-size: var(--font-size-lg);
+  margin: 0 0 var(--spacer-2) 0;
+}
+
+.schedule-style-guide p {
+  color: var(--color-text);
+  line-height: 1.6;
+  margin: 0 0 var(--spacer-2) 0;
+}
+
+.schedule-style-guide p:last-child {
+  margin-bottom: 0;
+}
+
+.schedule-style-guide ul {
+  color: var(--color-text);
+  line-height: 1.8;
+  margin: var(--spacer-2) 0;
+  padding-left: var(--spacer-4);
+}
+
+.schedule-style-guide li {
+  margin-bottom: var(--spacer-1);
+}
+
 /* Mobile responsiveness for Sumit travel contact */
 @media (max-width: 768px) {
   .sumit-travel-container {
     flex-direction: column;
     text-align: center;
   }
-  
+
   .sumit-travel-image {
     width: 100px;
   }
-  
+
   .sumit-travel-text {
     text-align: center;
   }
-  
+
   .sumit-travel-text p {
     font-size: var(--font-size-md);
   }
-  
+
   /* Schedule page mobile spacing */
   .schedule {
     padding: 0 var(--spacer-4);
   }
-  
+
   .schedule h1 {
     margin-bottom: var(--spacer-4);
   }
-  
-  .schedule-coming-soon {
-    margin-bottom: var(--spacer-4);
-    font-size: var(--font-size-xl);
+
+  .schedule-main {
+    padding: 0;
   }
-  
-  .schedule-description {
-    margin-bottom: var(--spacer-4);
-    line-height: 1.6;
+
+  .schedule-event {
+    flex-direction: column;
+    gap: var(--spacer-1);
+  }
+
+  .schedule-event-time {
+    min-width: unset;
+  }
+
+  .schedule-day {
+    padding: var(--spacer-4) var(--spacer-3);
+  }
+
+  .schedule-day h2 {
+    font-size: var(--font-size-xl);
   }
 }
