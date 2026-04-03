@@ -74,7 +74,8 @@ class MealSelection(db.Model):
     __tablename__ = 'meal_selections'
 
     id = db.Column(db.Integer, primary_key=True)
-    guest_name = db.Column(db.String(100), nullable=False, unique=True)
+    guest_name = db.Column(db.String(100), nullable=False)
+    submitted_by = db.Column(db.String(100), nullable=False)
     meal_choice = db.Column(db.String(50), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
@@ -86,6 +87,7 @@ class MealSelection(db.Model):
         return {
             'id': self.id,
             'guest_name': self.guest_name,
+            'submitted_by': self.submitted_by,
             'meal_choice': self.meal_choice,
             'created_at': self.created_at.isoformat() if self.created_at else None,
             'updated_at': self.updated_at.isoformat() if self.updated_at else None

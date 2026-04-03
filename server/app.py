@@ -161,6 +161,17 @@ def check_guest():
                 'guest': guest.to_dict()
             })
 
+        # Check if name matches a plus one from RSVPs
+        plus_one_match = RSVP.query.filter(
+            db.func.lower(RSVP.plus_one_name) == db.func.lower(name)
+        ).first()
+
+        if plus_one_match:
+            return jsonify({
+                'is_invited': True,
+                'guest': {'name': plus_one_match.plus_one_name, 'is_plus_one': True, 'invited_by': plus_one_match.name}
+            })
+
         # If no exact match, search for partial matches
         partial_matches = InvitedGuest.query.filter(
             db.func.lower(InvitedGuest.name).contains(db.func.lower(name))
@@ -181,6 +192,23 @@ def check_guest():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+# ── Helpers ──────────────────────────────────────────────────────────────────
+
+VALID_FUNDS = {'honeymoon', 'adventure', 'donate_in_name'}
+VALID_MEALS = {'meat', 'fish', 'vegetarian'}
+
+# Map fund name to the GiftDonation column name
+FUND_COLUMNS = {
+    'honeymoon': 'honeymoon',
+    'adventure': 'adventure',
+    'donate_in_name': 'donate_in_name',
+}
+
+def find_gift_donation(guest_name):
+    return GiftDonation.query.filter(
+        db.func.lower(GiftDonation.guest_name) == db.func.lower(guest_name)
+    ).first()
+
 # ── Admin endpoints (API key required) ───────────────────────────────────────
 
 # Gift Donation endpoints
@@ -188,7 +216,7 @@ def check_guest():
 def save_gift_donation():
     try:
         data = request.get_json()
-        guest_name = data.get('guestName', '').strip()
+        guest_name = data.get('guestName', '').strip()[:100]
         fund = data.get('fund', '').strip()
         associated_names = data.get('associatedNames', [])
         donation_option = data.get('donationOption')
@@ -196,28 +224,22 @@ def save_gift_donation():
         if not guest_name or not fund:
             return jsonify({'error': 'guestName and fund are required'}), 400
 
-        existing = GiftDonation.query.filter(
-            db.func.lower(GiftDonation.guest_name) == db.func.lower(guest_name)
-        ).first()
+        if fund not in VALID_FUNDS:
+            return jsonify({'error': f'Invalid fund. Must be one of: {", ".join(VALID_FUNDS)}'}), 400
 
-        names_str = ','.join(associated_names) if associated_names else None
+        existing = find_gift_donation(guest_name)
+        names_str = ','.join(n[:100] for n in associated_names[:20]) if associated_names else None
 
         if existing:
             existing.associated_names = names_str
-            if fund == 'honeymoon':
-                existing.honeymoon = True
-            elif fund == 'adventure':
-                existing.adventure = True
-            elif fund == 'donate_in_name':
-                existing.donate_in_name = True
+            setattr(existing, FUND_COLUMNS[fund], True)
+            if fund == 'donate_in_name':
                 existing.donation_option = donation_option
         else:
             record = GiftDonation(
                 guest_name=guest_name,
                 associated_names=names_str,
-                honeymoon=(fund == 'honeymoon'),
-                adventure=(fund == 'adventure'),
-                donate_in_name=(fund == 'donate_in_name'),
+                **{FUND_COLUMNS[fund]: True},
                 donation_option=donation_option if fund == 'donate_in_name' else None
             )
             db.session.add(record)
@@ -233,23 +255,19 @@ def save_gift_donation():
 def undo_gift_donation():
     try:
         data = request.get_json()
-        guest_name = data.get('guestName', '').strip()
+        guest_name = data.get('guestName', '').strip()[:100]
         fund = data.get('fund', '').strip()
 
         if not guest_name or not fund:
             return jsonify({'error': 'guestName and fund are required'}), 400
 
-        existing = GiftDonation.query.filter(
-            db.func.lower(GiftDonation.guest_name) == db.func.lower(guest_name)
-        ).first()
+        if fund not in VALID_FUNDS:
+            return jsonify({'error': f'Invalid fund. Must be one of: {", ".join(VALID_FUNDS)}'}), 400
 
+        existing = find_gift_donation(guest_name)
         if existing:
-            if fund == 'honeymoon':
-                existing.honeymoon = False
-            elif fund == 'adventure':
-                existing.adventure = False
-            elif fund == 'donate_in_name':
-                existing.donate_in_name = False
+            setattr(existing, FUND_COLUMNS[fund], False)
+            if fund == 'donate_in_name':
                 existing.donation_option = None
             db.session.commit()
 
@@ -307,20 +325,31 @@ def save_meal_selection():
     try:
         data = request.get_json()
         guest_name = data.get('guestName', '').strip()
+        submitted_by = data.get('submittedBy', '').strip()
         meal_choice = data.get('mealChoice', '').strip()
 
-        if not guest_name or not meal_choice:
-            return jsonify({'error': 'guestName and mealChoice are required'}), 400
+        if not guest_name or not submitted_by or not meal_choice:
+            return jsonify({'error': 'guestName, submittedBy, and mealChoice are required'}), 400
 
         existing = MealSelection.query.filter(
-            db.func.lower(MealSelection.guest_name) == db.func.lower(guest_name)
+            db.func.lower(MealSelection.guest_name) == db.func.lower(guest_name),
+            db.func.lower(MealSelection.submitted_by) == db.func.lower(submitted_by)
         ).first()
 
         if existing:
             existing.meal_choice = meal_choice
         else:
-            record = MealSelection(guest_name=guest_name, meal_choice=meal_choice)
+            record = MealSelection(guest_name=guest_name, submitted_by=submitted_by, meal_choice=meal_choice)
             db.session.add(record)
+
+        # If someone updates their own meal, sync all other records for them
+        if guest_name.lower() == submitted_by.lower():
+            others = MealSelection.query.filter(
+                db.func.lower(MealSelection.guest_name) == db.func.lower(guest_name),
+                db.func.lower(MealSelection.submitted_by) != db.func.lower(submitted_by)
+            ).all()
+            for other in others:
+                other.meal_choice = meal_choice
 
         db.session.commit()
         return jsonify({'message': 'Meal selection saved'}), 200
@@ -332,12 +361,26 @@ def save_meal_selection():
 @app.route("/api/meal-selection/<guest_name>", methods=["GET"])
 def get_meal_selection(guest_name):
     try:
-        record = MealSelection.query.filter(
-            db.func.lower(MealSelection.guest_name) == db.func.lower(guest_name)
-        ).first()
-        if record:
-            return jsonify({'selection': record.to_dict()}), 200
-        return jsonify({'selection': None}), 200
+        # Meals this person submitted (their cards)
+        records = MealSelection.query.filter(
+            db.func.lower(MealSelection.submitted_by) == db.func.lower(guest_name)
+        ).all()
+
+        # Check if someone else already submitted a meal for this person
+        own_meal = None
+        own_names = [r.guest_name.lower() for r in records]
+        if guest_name.lower() not in own_names:
+            other_record = MealSelection.query.filter(
+                db.func.lower(MealSelection.guest_name) == db.func.lower(guest_name),
+                db.func.lower(MealSelection.submitted_by) != db.func.lower(guest_name)
+            ).first()
+            if other_record:
+                own_meal = other_record.to_dict()
+
+        return jsonify({
+            'selections': [r.to_dict() for r in records],
+            'own_meal': own_meal
+        }), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 

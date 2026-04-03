@@ -49,10 +49,25 @@
   text-align: center;
 }
 
-/* Meal selection */
-.logistics-meal-section {
+/* Your meal section */
+.logistics-your-meal {
   max-width: 500px;
   margin: 0 auto var(--spacer-4) auto;
+}
+
+/* Others section */
+.logistics-others-section {
+  max-width: 500px;
+  margin: 0 auto var(--spacer-4) auto;
+  padding-top: var(--spacer-3);
+  border-top: 1px solid var(--color-border);
+}
+
+.logistics-others-heading {
+  font-weight: 600;
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--spacer-3);
 }
 
 .logistics-meal-label {
@@ -62,10 +77,155 @@
   margin-bottom: var(--spacer-3);
 }
 
-.logistics-meal-saved {
-  color: var(--color-text);
+/* Meal cards */
+.logistics-meal-cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-2);
+  margin-bottom: var(--spacer-3);
+}
+
+/* Collapsed card */
+.logistics-card-collapsed {
+  display: flex;
+  align-items: center;
+  gap: var(--spacer-2);
+  background: #2d6a4f;
+  border: 1px solid #2d6a4f;
+  border-radius: 12px;
+  padding: var(--spacer-2) var(--spacer-3);
+}
+
+.logistics-card-collapsed-name {
+  font-weight: 600;
+  color: white;
   font-size: var(--font-size-sm);
+}
+
+.logistics-card-collapsed-meal {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: var(--font-size-sm);
+}
+
+.logistics-card-collapsed-check {
+  color: white;
+  font-weight: 700;
+}
+
+.logistics-card-edit-button {
+  margin-left: auto;
+  background: none;
+  border: 1px solid white;
+  color: white;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  padding: 2px var(--spacer-2);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.logistics-card-edit-button:hover {
+  background: white;
+  color: #2d6a4f;
+}
+
+/* Expanded card */
+.logistics-card-expanded {
+  background: var(--color-for-rsvp);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: var(--spacer-3);
+  text-align: center;
+}
+
+.logistics-card-name-display {
+  font-weight: 600;
+  color: var(--color-primary);
+  font-size: var(--font-size-md);
   margin-bottom: var(--spacer-2);
+}
+
+.logistics-card-name-input {
+  margin-bottom: var(--spacer-2);
+}
+
+.logistics-input-wrapper {
+  position: relative;
+}
+
+.logistics-input-wrapper .logistics-card-name-input {
+  padding-right: 40px;
+}
+
+.logistics-input-status {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logistics-input-check {
+  color: #2d6a4f;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.logistics-input-x {
+  color: #c0392b;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.logistics-card-check-msg {
+  font-size: var(--font-size-sm);
+  margin-top: var(--spacer-1);
+  margin-bottom: var(--spacer-2);
+  text-align: center;
+}
+
+.logistics-card-not-found {
+  color: #c0392b;
+}
+
+.logistics-card-existing {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.logistics-selected-by {
+  font-size: var(--font-size-xs);
+  color: var(--color-text);
+  font-style: italic;
+  margin-top: var(--spacer-1);
+  text-align: center;
+}
+
+.logistics-meal-options-disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* Add another person button */
+.logistics-add-person {
+  background: none;
+  border: 2px dashed var(--color-border);
+  border-radius: 12px;
+  padding: var(--spacer-2) var(--spacer-3);
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.2s ease;
+}
+
+.logistics-add-person:hover {
+  border-color: var(--color-primary);
+  background: rgba(84, 114, 111, 0.04);
 }
 
 .logistics-meal-options {

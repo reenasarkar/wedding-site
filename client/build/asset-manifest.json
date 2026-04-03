@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.315dc64e.css",
-    "main.js": "/static/js/main.aa8ea9ab.js",
+    "main.css": "/static/css/main.5a12b816.css",
+    "main.js": "/static/js/main.4b67f1d7.js",
     "static/js/453.a3c1d153.chunk.js": "/static/js/453.a3c1d153.chunk.js",
     "static/media/zuko-upset.png": "/static/media/zuko-upset.4b229703ceb2ee83c4f6.png",
     "static/media/zuko-found-you.png": "/static/media/zuko-found-you.c28fb613980d117a4f30.png",
@@ -16,12 +16,12 @@
     "static/media/moonlight-1.png": "/static/media/moonlight-1.99890c2361ac34f1d07d.png",
     "static/media/wedding-logo.png": "/static/media/wedding-logo.3cdfd9229452687fd446.png",
     "index.html": "/index.html",
-    "main.315dc64e.css.map": "/static/css/main.315dc64e.css.map",
-    "main.aa8ea9ab.js.map": "/static/js/main.aa8ea9ab.js.map",
+    "main.5a12b816.css.map": "/static/css/main.5a12b816.css.map",
+    "main.4b67f1d7.js.map": "/static/js/main.4b67f1d7.js.map",
     "453.a3c1d153.chunk.js.map": "/static/js/453.a3c1d153.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.315dc64e.css",
-    "static/js/main.aa8ea9ab.js"
+    "static/css/main.5a12b816.css",
+    "static/js/main.4b67f1d7.js"
   ]
 }

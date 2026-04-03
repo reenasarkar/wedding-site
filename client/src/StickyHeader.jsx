@@ -22,7 +22,7 @@ export default function StickyHeader() {
     { key: 'rsvp', label: 'RSVP' },
     { key: 'faq', label: 'FAQ' },
     { key: 'gifts', label: 'Gifts' },
-    { key: 'logistics', label: 'Logistics' },
+    { key: 'logistics', label: 'Meal & Transportation' },
     { key: 'about-us', label: 'About Us' },
   ];
 
