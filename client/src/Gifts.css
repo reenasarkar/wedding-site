@@ -25,14 +25,14 @@
   font-size: var(--font-size-md);
   color: var(--color-text);
   max-width: 700px;
-  margin: 0 auto var(--spacer-3) auto;
+  margin: 0 auto var(--spacer-5) auto;
   line-height: 1.6;
 }
 
 /* Name check input */
 .gifts-name-check {
   max-width: 500px;
-  margin: 0 auto var(--spacer-4) auto;
+  margin: 0 auto var(--spacer-5) auto;
   text-align: left;
 }
 
@@ -68,7 +68,7 @@
 /* Associate names section */
 .gifts-associate-names {
   max-width: 500px;
-  margin: 0 auto var(--spacer-4) auto;
+  margin: 0 auto var(--spacer-5) auto;
   text-align: center;
 }
 
@@ -143,16 +143,16 @@
 .gifts-fund-select-label {
   font-weight: 600;
   color: var(--color-primary);
-  margin-bottom: var(--spacer-3);
+  margin-bottom: var(--spacer-4);
   font-size: var(--font-size-md);
 }
 
 .gifts-fund-options {
   display: flex;
   flex-direction: column;
-  gap: var(--spacer-2);
+  gap: var(--spacer-3);
   max-width: 500px;
-  margin: 0 auto var(--spacer-3) auto;
+  margin: 0 auto var(--spacer-5) auto;
 }
 
 .gifts-fund-option {

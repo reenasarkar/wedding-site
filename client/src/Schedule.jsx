@@ -83,9 +83,16 @@ export default function Schedule() {
           </div>
 
           <div className="schedule-event">
-            <span className="schedule-event-time">7:00 PM onward</span>
+            <span className="schedule-event-time">7:00 PM – 12:00 AM</span>
             <div className="schedule-event-details">
               <h3 className="schedule-event-name">Reception and Celebration</h3>
+            </div>
+          </div>
+
+          <div className="schedule-event">
+            <span className="schedule-event-time">Midnight onwards</span>
+            <div className="schedule-event-details">
+              <h3 className="schedule-event-name">Dear Josephine Late Night</h3>
             </div>
           </div>
 

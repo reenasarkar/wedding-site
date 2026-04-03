@@ -283,7 +283,7 @@ export default function Gifts() {
             )}
           </div>
 
-          <p className="gifts-fund-select-label">Which fund would you like to donate to?</p>
+          <p className="gifts-fund-select-label">Pick a gift to send our way!</p>
 
           <div className="gifts-fund-options">
             {fundOptions.map((f) => {
@@ -301,7 +301,7 @@ export default function Gifts() {
                     <span className="gifts-fund-option-icon">{f.icon}</span>
                     <span className="gifts-fund-option-title">{f.label}</span>
                     {alreadyDonated && (
-                      <span className="gifts-fund-option-badge">Donated</span>
+                      <span className="gifts-fund-option-badge">Gifted</span>
                     )}
                   </div>
                   {!alreadyDonated && <p className="gifts-fund-option-desc">{f.description}</p>}
@@ -311,7 +311,7 @@ export default function Gifts() {
                       className="gifts-undo-button"
                       onClick={(e) => { e.stopPropagation(); undoDonation(f.value); }}
                     >
-                      ↩ Undo/Didn't donate here!
+                      ↩ Undo
                     </button>
                   )}
                 </button>
