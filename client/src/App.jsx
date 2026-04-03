@@ -10,6 +10,8 @@ import './StickyHeader.css';
 import Schedule from "./Schedule";
 import FAQ from "./FAQ";
 import AboutUs from "./AboutUs";
+import Gifts from "./Gifts";
+import Logistics from "./Logistics";
 
 function AppContent() {
   const { pageShown, handleNavigation } = useRVWedding();
@@ -24,6 +26,8 @@ function AppContent() {
         {pageShown === 'rsvp' && <RSVP />}
         {pageShown === 'schedule' && <Schedule />}
         {pageShown === 'faq' && <FAQ />}
+        {pageShown === 'gifts' && <Gifts />}
+        {pageShown === 'logistics' && <Logistics />}
         {pageShown === 'about-us' && <AboutUs />}
       </main>
     </div>

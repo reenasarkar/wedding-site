@@ -4,7 +4,7 @@ from functools import wraps
 import os
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-from models import db, RSVP, InvitedGuest
+from models import db, RSVP, InvitedGuest, GiftDonation, MealSelection
 from datetime import datetime
 
 # Check if React build exists, otherwise serve from current directory
@@ -182,6 +182,165 @@ def check_guest():
         return jsonify({'error': str(e)}), 500
 
 # ── Admin endpoints (API key required) ───────────────────────────────────────
+
+# Gift Donation endpoints
+@app.route("/api/gift-donation", methods=["POST"])
+def save_gift_donation():
+    try:
+        data = request.get_json()
+        guest_name = data.get('guestName', '').strip()
+        fund = data.get('fund', '').strip()
+        associated_names = data.get('associatedNames', [])
+        donation_option = data.get('donationOption')
+
+        if not guest_name or not fund:
+            return jsonify({'error': 'guestName and fund are required'}), 400
+
+        existing = GiftDonation.query.filter(
+            db.func.lower(GiftDonation.guest_name) == db.func.lower(guest_name)
+        ).first()
+
+        names_str = ','.join(associated_names) if associated_names else None
+
+        if existing:
+            existing.associated_names = names_str
+            if fund == 'honeymoon':
+                existing.honeymoon = True
+            elif fund == 'adventure':
+                existing.adventure = True
+            elif fund == 'donate_in_name':
+                existing.donate_in_name = True
+                existing.donation_option = donation_option
+        else:
+            record = GiftDonation(
+                guest_name=guest_name,
+                associated_names=names_str,
+                honeymoon=(fund == 'honeymoon'),
+                adventure=(fund == 'adventure'),
+                donate_in_name=(fund == 'donate_in_name'),
+                donation_option=donation_option if fund == 'donate_in_name' else None
+            )
+            db.session.add(record)
+
+        db.session.commit()
+        return jsonify({'message': 'Donation saved'}), 200
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'error': str(e)}), 500
+
+
+@app.route("/api/gift-donation/undo", methods=["POST"])
+def undo_gift_donation():
+    try:
+        data = request.get_json()
+        guest_name = data.get('guestName', '').strip()
+        fund = data.get('fund', '').strip()
+
+        if not guest_name or not fund:
+            return jsonify({'error': 'guestName and fund are required'}), 400
+
+        existing = GiftDonation.query.filter(
+            db.func.lower(GiftDonation.guest_name) == db.func.lower(guest_name)
+        ).first()
+
+        if existing:
+            if fund == 'honeymoon':
+                existing.honeymoon = False
+            elif fund == 'adventure':
+                existing.adventure = False
+            elif fund == 'donate_in_name':
+                existing.donate_in_name = False
+                existing.donation_option = None
+            db.session.commit()
+
+        return jsonify({'message': 'Donation undone'}), 200
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'error': str(e)}), 500
+
+
+@app.route("/api/gift-donation/<guest_name>", methods=["GET"])
+def get_gift_donation(guest_name):
+    try:
+        record = GiftDonation.query.filter(
+            db.func.lower(GiftDonation.guest_name) == db.func.lower(guest_name)
+        ).first()
+        if record:
+            return jsonify({'donation': record.to_dict()}), 200
+        return jsonify({'donation': None}), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+@app.route("/api/gift-donation/names", methods=["POST"])
+def save_gift_donation_names():
+    try:
+        data = request.get_json()
+        guest_name = data.get('guestName', '').strip()
+        associated_names = data.get('associatedNames', [])
+
+        if not guest_name:
+            return jsonify({'error': 'guestName is required'}), 400
+
+        existing = GiftDonation.query.filter(
+            db.func.lower(GiftDonation.guest_name) == db.func.lower(guest_name)
+        ).first()
+
+        names_str = ','.join(associated_names) if associated_names else None
+
+        if existing:
+            existing.associated_names = names_str
+        else:
+            record = GiftDonation(guest_name=guest_name, associated_names=names_str)
+            db.session.add(record)
+
+        db.session.commit()
+        return jsonify({'message': 'Names saved'}), 200
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'error': str(e)}), 500
+
+
+# Meal Selection endpoints
+@app.route("/api/meal-selection", methods=["POST"])
+def save_meal_selection():
+    try:
+        data = request.get_json()
+        guest_name = data.get('guestName', '').strip()
+        meal_choice = data.get('mealChoice', '').strip()
+
+        if not guest_name or not meal_choice:
+            return jsonify({'error': 'guestName and mealChoice are required'}), 400
+
+        existing = MealSelection.query.filter(
+            db.func.lower(MealSelection.guest_name) == db.func.lower(guest_name)
+        ).first()
+
+        if existing:
+            existing.meal_choice = meal_choice
+        else:
+            record = MealSelection(guest_name=guest_name, meal_choice=meal_choice)
+            db.session.add(record)
+
+        db.session.commit()
+        return jsonify({'message': 'Meal selection saved'}), 200
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'error': str(e)}), 500
+
+
+@app.route("/api/meal-selection/<guest_name>", methods=["GET"])
+def get_meal_selection(guest_name):
+    try:
+        record = MealSelection.query.filter(
+            db.func.lower(MealSelection.guest_name) == db.func.lower(guest_name)
+        ).first()
+        if record:
+            return jsonify({'selection': record.to_dict()}), 200
+        return jsonify({'selection': None}), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
 
 # Add one or many invited guests
 # Accepts a single object or an array of objects

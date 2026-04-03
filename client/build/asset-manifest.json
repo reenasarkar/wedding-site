@@ -1,17 +1,27 @@
 {
   "files": {
-    "main.css": "/static/css/main.50806b72.css",
-    "main.js": "/static/js/main.7702a2a7.js",
+    "main.css": "/static/css/main.315dc64e.css",
+    "main.js": "/static/js/main.aa8ea9ab.js",
     "static/js/453.a3c1d153.chunk.js": "/static/js/453.a3c1d153.chunk.js",
+    "static/media/zuko-upset.png": "/static/media/zuko-upset.4b229703ceb2ee83c4f6.png",
+    "static/media/zuko-found-you.png": "/static/media/zuko-found-you.c28fb613980d117a4f30.png",
+    "static/media/varun-mich.png": "/static/media/varun-mich.d26cc62e977d3c739d07.png",
+    "static/media/reena-varun.png": "/static/media/reena-varun.16a81ad90c65ea9cc592.png",
+    "static/media/JHU-part-2.png": "/static/media/JHU-part-2.8da627a35d2e51aeb37a.png",
+    "static/media/zuko-belly-up.png": "/static/media/zuko-belly-up.a0b2bf40161f775af09c.png",
+    "static/media/sumit-happy-chips.png": "/static/media/sumit-happy-chips.47cf061cd766f8d62328.png",
+    "static/media/zuko-is-searching.png": "/static/media/zuko-is-searching.f6cbd2bbb039502650bb.png",
+    "static/media/Zuko-cant-find.png": "/static/media/Zuko-cant-find.2828f95f68bf2a60afb1.png",
+    "static/media/varun-sleeping-great-books.JPG": "/static/media/varun-sleeping-great-books.42757f160130f9b5e024.JPG",
     "static/media/moonlight-1.png": "/static/media/moonlight-1.99890c2361ac34f1d07d.png",
     "static/media/wedding-logo.png": "/static/media/wedding-logo.3cdfd9229452687fd446.png",
     "index.html": "/index.html",
-    "main.50806b72.css.map": "/static/css/main.50806b72.css.map",
-    "main.7702a2a7.js.map": "/static/js/main.7702a2a7.js.map",
+    "main.315dc64e.css.map": "/static/css/main.315dc64e.css.map",
+    "main.aa8ea9ab.js.map": "/static/js/main.aa8ea9ab.js.map",
     "453.a3c1d153.chunk.js.map": "/static/js/453.a3c1d153.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.50806b72.css",
-    "static/js/main.7702a2a7.js"
+    "static/css/main.315dc64e.css",
+    "static/js/main.aa8ea9ab.js"
   ]
 }

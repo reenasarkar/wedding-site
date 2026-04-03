@@ -40,6 +40,58 @@ class RSVP(db.Model):
             'updated_at': self.updated_at.isoformat() if self.updated_at else None
         }
 
+class GiftDonation(db.Model):
+    __tablename__ = 'gift_donations'
+
+    id = db.Column(db.Integer, primary_key=True)
+    guest_name = db.Column(db.String(100), nullable=False, unique=True)
+    associated_names = db.Column(db.Text, nullable=True)
+    honeymoon = db.Column(db.Boolean, default=False)
+    adventure = db.Column(db.Boolean, default=False)
+    donate_in_name = db.Column(db.Boolean, default=False)
+    donation_option = db.Column(db.String(50), nullable=True)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    def __repr__(self):
+        return f'<GiftDonation {self.guest_name}>'
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'guest_name': self.guest_name,
+            'associated_names': self.associated_names.split(',') if self.associated_names else [],
+            'honeymoon': self.honeymoon,
+            'adventure': self.adventure,
+            'donate_in_name': self.donate_in_name,
+            'donation_option': self.donation_option,
+            'created_at': self.created_at.isoformat() if self.created_at else None,
+            'updated_at': self.updated_at.isoformat() if self.updated_at else None
+        }
+
+
+class MealSelection(db.Model):
+    __tablename__ = 'meal_selections'
+
+    id = db.Column(db.Integer, primary_key=True)
+    guest_name = db.Column(db.String(100), nullable=False, unique=True)
+    meal_choice = db.Column(db.String(50), nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    def __repr__(self):
+        return f'<MealSelection {self.guest_name} - {self.meal_choice}>'
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'guest_name': self.guest_name,
+            'meal_choice': self.meal_choice,
+            'created_at': self.created_at.isoformat() if self.created_at else None,
+            'updated_at': self.updated_at.isoformat() if self.updated_at else None
+        }
+
+
 class InvitedGuest(db.Model):
     __tablename__ = 'invited_guests'
     

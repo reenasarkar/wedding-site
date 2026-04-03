@@ -1,0 +1,340 @@
+/* Gifts page */
+.gifts {
+  text-align: center;
+  padding: 0 var(--spacer-4) var(--spacer-5);
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow-x: hidden;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.gifts-main {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.gifts h1 {
+  color: var(--color-primary);
+  font-size: var(--font-size-xxxl);
+  margin-bottom: var(--spacer-2);
+  margin-top: var(--spacer-1);
+}
+
+.gifts-intro {
+  font-size: var(--font-size-md);
+  color: var(--color-text);
+  max-width: 700px;
+  margin: 0 auto var(--spacer-3) auto;
+  line-height: 1.6;
+}
+
+/* Name check input */
+.gifts-name-check {
+  max-width: 500px;
+  margin: 0 auto var(--spacer-4) auto;
+  text-align: left;
+}
+
+.gifts-name-check .form-input {
+  font-size: var(--font-size-lg);
+  padding: var(--spacer-3);
+}
+
+.gifts-spicy-text {
+  background: linear-gradient(90deg, #45b7d1, #4ecdc4, #96ceb4);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gifts-shimmer 3s ease-in-out infinite;
+  font-style: italic;
+  font-weight: 700;
+}
+
+@keyframes gifts-shimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.gifts-name-check label {
+  display: block;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: var(--spacer-2);
+  text-align: center;
+}
+
+/* Associate names section */
+.gifts-associate-names {
+  max-width: 500px;
+  margin: 0 auto var(--spacer-4) auto;
+  text-align: center;
+}
+
+.gifts-associate-label {
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: var(--spacer-2);
+  font-size: var(--font-size-sm);
+}
+
+.gifts-associate-input-row {
+  display: flex;
+  gap: var(--spacer-2);
+}
+
+.gifts-associate-input-row .form-input {
+  flex: 1;
+}
+
+.gifts-add-button {
+  padding: var(--spacer-2) var(--spacer-3);
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.gifts-add-button:hover {
+  background: var(--color-secondary);
+}
+
+.gifts-name-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacer-2);
+  margin-top: var(--spacer-2);
+  justify-content: center;
+}
+
+.gifts-name-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacer-1);
+  background: var(--color-for-rsvp);
+  color: var(--color-primary);
+  padding: var(--spacer-1) var(--spacer-2);
+  border-radius: 20px;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+}
+
+.gifts-tag-remove {
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  cursor: pointer;
+  font-size: var(--font-size-md);
+  padding: 0;
+  line-height: 1;
+  opacity: 0.7;
+}
+
+.gifts-tag-remove:hover {
+  opacity: 1;
+}
+
+/* Fund selection */
+.gifts-fund-select-label {
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: var(--spacer-3);
+  font-size: var(--font-size-md);
+}
+
+.gifts-fund-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-2);
+  max-width: 500px;
+  margin: 0 auto var(--spacer-3) auto;
+}
+
+.gifts-fund-option {
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: 12px;
+  padding: var(--spacer-3);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.2s ease;
+  width: 100%;
+}
+
+.gifts-fund-option:hover {
+  border-color: var(--color-secondary);
+}
+
+.gifts-fund-option-selected {
+  border-color: var(--color-primary);
+  background: rgba(84, 114, 111, 0.04);
+}
+
+.gifts-fund-option-donated {
+  background: var(--color-for-rsvp);
+  border-color: var(--color-secondary);
+  cursor: default;
+}
+
+.gifts-fund-option-donated:hover {
+  border-color: var(--color-secondary);
+}
+
+.gifts-fund-option-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacer-2);
+  margin-bottom: var(--spacer-1);
+}
+
+.gifts-fund-option-icon {
+  font-size: 24px;
+}
+
+.gifts-fund-option-title {
+  font-weight: 600;
+  color: var(--color-primary);
+  font-size: var(--font-size-md);
+}
+
+.gifts-fund-option-badge {
+  margin-left: auto;
+  background: #2d6a4f;
+  color: white;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  padding: 2px var(--spacer-2);
+  border-radius: 12px;
+}
+
+.gifts-undo-button {
+  display: inline-block;
+  background: none;
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  cursor: pointer;
+  padding: 2px var(--spacer-2);
+  border-radius: 6px;
+  margin-top: var(--spacer-1);
+  transition: all 0.2s ease;
+}
+
+.gifts-undo-button:hover {
+  background: var(--color-primary);
+  color: white;
+}
+
+.gifts-fund-option-desc {
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Fund detail (description + buttons) */
+.gifts-fund-detail {
+  max-width: 500px;
+  margin: 0 auto;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: var(--spacer-4);
+  text-align: center;
+}
+
+.gifts-fund-description {
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+  line-height: 1.6;
+  margin-bottom: var(--spacer-3);
+}
+
+/* Donation radio options */
+.donation-options {
+  text-align: left;
+  margin-bottom: var(--spacer-3);
+}
+
+.donation-options-label {
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: var(--spacer-2);
+  font-size: var(--font-size-sm);
+}
+
+.donation-option-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+  padding: var(--spacer-1) 0;
+}
+
+.donation-option-label input[type="radio"] {
+  margin-right: var(--spacer-2);
+  transform: scale(1.2);
+  accent-color: var(--color-primary);
+}
+
+/* Payment buttons */
+.gifts-payment-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-2);
+  width: 100%;
+}
+
+.gift-button {
+  display: block;
+  text-decoration: none;
+  background: transparent;
+  font-weight: 600;
+  padding: var(--spacer-2) var(--spacer-3);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  text-align: center;
+  font-size: var(--font-size-sm);
+  border: 2px solid;
+  cursor: pointer;
+}
+
+.gift-button-venmo {
+  color: #008CFF;
+  border-color: #008CFF;
+}
+
+.gift-button-venmo:hover {
+  background-color: #008CFF;
+  color: white;
+  text-decoration: none;
+}
+
+.gift-button-stripe {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.gift-button-stripe:hover {
+  background-color: var(--color-primary);
+  color: white;
+  text-decoration: none;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .gifts {
+    padding: 0 var(--spacer-3) var(--spacer-4) var(--spacer-3);
+  }
+
+  .gifts h1 {
+    font-size: var(--font-size-xxl);
+  }
+}

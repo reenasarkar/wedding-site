@@ -21,6 +21,8 @@ export default function StickyHeader() {
     { key: 'schedule', label: 'Event Schedule' },
     { key: 'rsvp', label: 'RSVP' },
     { key: 'faq', label: 'FAQ' },
+    { key: 'gifts', label: 'Gifts' },
+    { key: 'logistics', label: 'Logistics' },
     { key: 'about-us', label: 'About Us' },
   ];
 

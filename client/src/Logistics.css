@@ -1,0 +1,232 @@
+/* Logistics page */
+.logistics {
+  text-align: center;
+  padding: 0 var(--spacer-4) var(--spacer-5);
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow-x: hidden;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.logistics-main {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.logistics h1 {
+  color: var(--color-primary);
+  font-size: var(--font-size-xxxl);
+  margin-bottom: var(--spacer-2);
+  margin-top: var(--spacer-1);
+}
+
+.logistics-intro {
+  font-size: var(--font-size-md);
+  color: var(--color-text);
+  max-width: 700px;
+  margin: 0 auto var(--spacer-3) auto;
+  line-height: 1.6;
+}
+
+/* Name check - reuse gifts patterns */
+.logistics-name-check {
+  max-width: 500px;
+  margin: 0 auto var(--spacer-4) auto;
+  text-align: left;
+}
+
+.logistics-name-check .form-input {
+  font-size: var(--font-size-lg);
+  padding: var(--spacer-3);
+}
+
+.logistics-name-check label {
+  display: block;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: var(--spacer-2);
+  text-align: center;
+}
+
+/* Meal selection */
+.logistics-meal-section {
+  max-width: 500px;
+  margin: 0 auto var(--spacer-4) auto;
+}
+
+.logistics-meal-label {
+  font-weight: 600;
+  color: var(--color-primary);
+  font-size: var(--font-size-md);
+  margin-bottom: var(--spacer-3);
+}
+
+.logistics-meal-saved {
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--spacer-2);
+}
+
+.logistics-meal-options {
+  display: flex;
+  gap: var(--spacer-2);
+  margin-bottom: var(--spacer-3);
+}
+
+.logistics-meal-option {
+  flex: 1;
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: 12px;
+  padding: var(--spacer-3);
+  cursor: pointer;
+  text-align: center;
+  transition: border-color 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacer-1);
+}
+
+.logistics-meal-option:hover {
+  border-color: var(--color-secondary);
+}
+
+.logistics-meal-option-selected {
+  border-color: var(--color-primary);
+  background: rgba(84, 114, 111, 0.04);
+}
+
+.logistics-meal-icon {
+  font-size: 32px;
+}
+
+.logistics-meal-title {
+  font-weight: 600;
+  color: var(--color-primary);
+  font-size: var(--font-size-sm);
+}
+
+.logistics-toast {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacer-1);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  padding: var(--spacer-1) var(--spacer-3);
+  border-radius: 20px;
+  animation: toast-fade-in 0.3s ease;
+}
+
+.logistics-toast-saving {
+  color: var(--color-text);
+}
+
+.logistics-toast-saved {
+  color: #2d6a4f;
+  background: var(--color-for-rsvp);
+  animation: toast-fade-in 0.3s ease, toast-fade-out 0.5s ease 2.5s forwards;
+  flex-direction: column;
+  padding: var(--spacer-2) var(--spacer-3);
+}
+
+.logistics-toast-bar {
+  width: 100%;
+  height: 3px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  margin-top: var(--spacer-1);
+  overflow: hidden;
+}
+
+.logistics-toast-bar-fill {
+  height: 100%;
+  background: #2d6a4f;
+  border-radius: 3px;
+  animation: bar-shrink 2.5s linear forwards;
+}
+
+@keyframes bar-shrink {
+  from { width: 100%; }
+  to { width: 0%; }
+}
+
+.logistics-spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--color-border);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes toast-fade-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes toast-fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+/* Transportation section */
+.logistics-transport-section {
+  max-width: 500px;
+  margin: var(--spacer-4) auto 0 auto;
+  padding-top: var(--spacer-4);
+  border-top: 1px solid var(--color-border);
+}
+
+.logistics-transport-section h2 {
+  color: var(--color-primary);
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  margin-bottom: var(--spacer-2);
+}
+
+.logistics-transport-text {
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+  line-height: 1.6;
+  margin-bottom: var(--spacer-3);
+}
+
+.logistics-transport-button {
+  display: inline-block;
+  padding: var(--spacer-2) var(--spacer-4);
+  border: 2px solid var(--color-primary);
+  border-radius: 8px;
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.logistics-transport-button:hover {
+  background-color: var(--color-primary);
+  color: white;
+  text-decoration: none;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .logistics {
+    padding: 0 var(--spacer-3) var(--spacer-4);
+  }
+
+  .logistics h1 {
+    font-size: var(--font-size-xxl);
+  }
+
+  .logistics-meal-options {
+    flex-direction: column;
+  }
+}
