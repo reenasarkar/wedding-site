@@ -6,9 +6,10 @@ import zukoHappy from './zuko-is-searching.png';
 import './Gifts.css';
 
 const VENMO_LINK = 'https://venmo.com/u/Reena-Sarkar';
+const VENMO_APP_LINK = 'venmo://paycharge?txn=pay&recipients=Reena-Sarkar';
 const STRIPE_LINK_HONEYMOON = 'https://buy.stripe.com/cNibJ3eAF6lfg7B7qN0kE01';
 const STRIPE_LINK_ADVENTURE = 'https://buy.stripe.com/00w8wR0JP4d7cVp4eB0kE02';
-const STRIPE_LINK_DONATE = 'https://buy.stripe.com/bJecN750S4Z08Dh1n0kE03';
+const STRIPE_LINK_DONATE = 'https://buy.stripe.com/bJecN750S24Z08Dh1n0kE03';
 
 const fundOptions = [
   { value: 'honeymoon', label: 'Honeymoon & Life Fund', zukoImg: zukoTummy, emojis: '🇯🇵 🇮🇳 🇮🇸 🇫🇷 🇹🇼', stripeLink: STRIPE_LINK_HONEYMOON,
@@ -349,7 +350,15 @@ export default function Gifts() {
                 <button
                   type="button"
                   className="gift-button gift-button-venmo"
-                  onClick={() => handlePayment(VENMO_LINK)}
+                  onClick={() => {
+                    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+                    if (isMobile) {
+                      window.location.href = VENMO_APP_LINK;
+                      setTimeout(() => { window.open(VENMO_LINK, '_blank'); }, 1500);
+                    } else {
+                      handlePayment(VENMO_LINK);
+                    }
+                  }}
                 >
                   Venmo (No fees)
                 </button>
