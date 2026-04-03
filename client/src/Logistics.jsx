@@ -1,13 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
 import logo from './wedding-logo.png';
+import reenaJamon from './reena-jamon.png';
+import varunFish from './varun-fish.png';
+import zukoVeg from './zuko-veg.png';
 import './Logistics.css';
 
 const TRANSPORT_LINK = 'https://docs.google.com/forms/d/e/1FAIpQLSf-BUV0DDWZZNmHs0yJvlFpbLkD1Jh6sUSHX1tfhUUOHagkcw/viewform';
 
 const mealOptions = [
-  { value: 'meat', label: 'Meat', icon: '🥩' },
-  { value: 'fish', label: 'Fish', icon: '🐟' },
-  { value: 'vegetarian', label: 'Vegetarian', icon: '🥬' },
+  { value: 'meat', label: 'Meat', image: reenaJamon },
+  { value: 'fish', label: 'Fish', image: varunFish },
+  { value: 'vegetarian', label: 'Vegetarian', image: zukoVeg },
 ];
 
 export default function Logistics() {
@@ -150,7 +153,6 @@ export default function Logistics() {
         setMealCards(saved);
         setSaveStatus({ index, status: 'saved' });
         setTimeout(() => {
-          setExpandedIndex(-1);
           setSaveStatus(null);
         }, 2500);
       } else {
@@ -306,6 +308,7 @@ export default function Logistics() {
 
               return (
                 <div className="logistics-card-expanded">
+                  {card.saved && <button type="button" className="logistics-card-close" onClick={() => setExpandedIndex(-1)}>&times;</button>}
                   <p className="logistics-card-name-display">{card.name}</p>
                   <div className="logistics-meal-options">
                     {mealOptions.map((option) => (
@@ -315,7 +318,7 @@ export default function Logistics() {
                         className={`logistics-meal-option ${card.meal === option.value ? 'logistics-meal-option-selected' : ''}`}
                         onClick={() => saveMeal(0, option.value)}
                       >
-                        <span className="logistics-meal-icon">{option.icon}</span>
+                        {option.image ? <img src={option.image} alt={option.label} className="logistics-meal-option-img" /> : <span className="logistics-meal-icon">{option.icon}</span>}
                         <span className="logistics-meal-title">{option.label}</span>
                       </button>
                     ))}
@@ -359,6 +362,14 @@ export default function Logistics() {
 
                 return (
                   <div key={index} className="logistics-card-expanded">
+                    <button type="button" className="logistics-card-close" onClick={() => {
+                      if (card.saved) {
+                        setExpandedIndex(-1);
+                      } else {
+                        setMealCards((prev) => prev.filter((_, idx) => idx !== index));
+                        setExpandedIndex(-1);
+                      }
+                    }}>&times;</button>
                     <div className="logistics-input-wrapper">
                       <input
                         type="text"
@@ -394,7 +405,7 @@ export default function Logistics() {
                           onClick={() => card.verified && saveMeal(index, option.value)}
                           disabled={!card.verified}
                         >
-                          <span className="logistics-meal-icon">{option.icon}</span>
+                          {option.image ? <img src={option.image} alt={option.label} className="logistics-meal-option-img" /> : <span className="logistics-meal-icon">{option.icon}</span>}
                           <span className="logistics-meal-title">{option.label}</span>
                         </button>
                       ))}

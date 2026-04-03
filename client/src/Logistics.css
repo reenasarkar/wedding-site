@@ -10,7 +10,7 @@
 }
 
 .logistics-main {
-  max-width: 600px;
+  max-width: 850px;
   margin: 0 auto;
 }
 
@@ -51,13 +51,13 @@
 
 /* Your meal section */
 .logistics-your-meal {
-  max-width: 500px;
+  max-width: 700px;
   margin: 0 auto var(--spacer-5) auto;
 }
 
 /* Others section */
 .logistics-others-section {
-  max-width: 500px;
+  max-width: 700px;
   margin: 0 auto var(--spacer-5) auto;
   padding-top: var(--spacer-5);
   border-top: 1px solid var(--color-border);
@@ -130,12 +130,33 @@
   color: #2d6a4f;
 }
 
+/* Close button on expanded card */
+.logistics-card-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--color-primary);
+  cursor: pointer;
+  line-height: 1;
+  padding: 4px 8px;
+  z-index: 2;
+}
+
+.logistics-card-close:hover {
+  color: #c0392b;
+}
+
 /* Expanded card */
 .logistics-card-expanded {
+  position: relative;
   background: var(--color-for-rsvp);
   border: 1px solid var(--color-border);
   border-radius: 12px;
-  padding: var(--spacer-3);
+  padding: 40px var(--spacer-3) var(--spacer-3);
   text-align: center;
 }
 
@@ -239,14 +260,14 @@
   background: var(--color-surface);
   border: 2px solid var(--color-border);
   border-radius: 12px;
-  padding: var(--spacer-3);
+  padding: var(--spacer-4);
   cursor: pointer;
   text-align: center;
   transition: border-color 0.2s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--spacer-1);
+  gap: var(--spacer-2);
 }
 
 .logistics-meal-option:hover {
@@ -259,7 +280,18 @@
 }
 
 .logistics-meal-icon {
-  font-size: 32px;
+  font-size: 48px;
+}
+
+.logistics-meal-option-img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.logistics-meal-option-img[alt="Meat"] {
+  object-position: center bottom;
 }
 
 .logistics-meal-title {
@@ -338,7 +370,7 @@
 
 /* Transportation section */
 .logistics-transport-section {
-  max-width: 500px;
+  max-width: 700px;
   margin: var(--spacer-5) auto 0 auto;
   padding-top: var(--spacer-5);
   border-top: 1px solid var(--color-border);
@@ -388,5 +420,32 @@
 
   .logistics-meal-options {
     flex-direction: column;
+  }
+
+  .logistics-meal-option {
+    padding: var(--spacer-2);
+    gap: var(--spacer-4);
+    flex-direction: row;
+    text-align: left;
+    justify-content: flex-start;
+  }
+
+  .logistics-meal-option-img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .logistics-meal-icon {
+    font-size: 32px;
+  }
+
+  .logistics-meal-title {
+    font-size: var(--font-size-xl);
+  }
+
+  .logistics-your-meal,
+  .logistics-others-section,
+  .logistics-transport-section {
+    max-width: 100%;
   }
 }

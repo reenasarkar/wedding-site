@@ -192,8 +192,23 @@
   margin-bottom: var(--spacer-1);
 }
 
-.gifts-fund-option-icon {
-  font-size: 24px;
+.gifts-fund-zuko-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.gifts-fund-zuko-img {
+  width: 50px;
+  height: auto;
+  object-fit: contain;
+}
+
+.gifts-fund-zuko-emojis {
+  font-size: 12px;
+  letter-spacing: 1px;
 }
 
 .gifts-fund-option-title {

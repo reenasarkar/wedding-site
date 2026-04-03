@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import logo from './wedding-logo.png';
+import zukoTummy from './zuko-tummy.png';
+import zukoBall from './zuko-ball.png';
+import zukoHappy from './zuko-is-searching.png';
 import './Gifts.css';
 
 const VENMO_LINK = 'https://venmo.com/u/Reena-Sarkar';
@@ -8,11 +11,11 @@ const STRIPE_LINK_ADVENTURE = 'https://buy.stripe.com/00w8wR0JP4d7cVp4eB0kE02';
 const STRIPE_LINK_DONATE = 'https://buy.stripe.com/bJecN750S4Z08Dh1n0kE03';
 
 const fundOptions = [
-  { value: 'honeymoon', label: 'Honeymoon & Life Fund', icon: '✈️', stripeLink: STRIPE_LINK_HONEYMOON,
+  { value: 'honeymoon', label: 'Honeymoon & Life Fund', zukoImg: zukoTummy, emojis: '🇯🇵 🇮🇳 🇮🇸 🇫🇷 🇹🇼', stripeLink: STRIPE_LINK_HONEYMOON,
     description: "Help us build our life together and kick off our honeymoon! From setting up our home to exploring somewhere new on our first trip as a married couple — your gift goes toward making it all happen." },
-  { value: 'adventure', label: 'Outdoor Adventure Fund', icon: '⛰️', stripeLink: STRIPE_LINK_ADVENTURE,
+  { value: 'adventure', label: 'Outdoor Adventure Fund', zukoImg: zukoBall, emojis: '🏌️ ⛷️ 🥾 ⛰️ 🚴', stripeLink: STRIPE_LINK_ADVENTURE,
     description: "Reena and Varun love doing outdoor activities together — whether it's skiing, hiking, or golfing. Help us gear up for our next adventure!" },
-  { value: 'donate_in_name', label: 'Donate in Our Name', icon: '💚', stripeLink: STRIPE_LINK_DONATE,
+  { value: 'donate_in_name', label: 'Donate in Our Name', zukoImg: zukoHappy, emojis: '❤️ 💕 🐾 🌎 ❤️', stripeLink: STRIPE_LINK_DONATE,
     description: "Make an impact that lasts beyond our wedding day. In lieu of a traditional gift, choose a cause close to our hearts and we'll make sure your generosity reaches the right place." },
 ];
 
@@ -298,7 +301,10 @@ export default function Gifts() {
                   onClick={() => !alreadyDonated && setSelectedFund(isSelected ? '' : f.value)}
                 >
                   <div className="gifts-fund-option-header">
-                    <span className="gifts-fund-option-icon">{f.icon}</span>
+                    <div className="gifts-fund-zuko-icon">
+                      <img src={f.zukoImg} alt="Zuko" className="gifts-fund-zuko-img" />
+                      <span className="gifts-fund-zuko-emojis">{f.emojis}</span>
+                    </div>
                     <span className="gifts-fund-option-title">{f.label}</span>
                     {alreadyDonated && (
                       <span className="gifts-fund-option-badge">Gifted</span>
