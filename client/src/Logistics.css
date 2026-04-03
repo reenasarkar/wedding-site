@@ -300,6 +300,12 @@
   font-size: var(--font-size-sm);
 }
 
+.logistics-meal-desc {
+  font-size: var(--font-size-xs);
+  color: var(--color-text);
+  line-height: 1.4;
+}
+
 .logistics-toast {
   display: inline-flex;
   align-items: center;

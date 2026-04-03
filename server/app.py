@@ -195,7 +195,7 @@ def check_guest():
 # ── Helpers ──────────────────────────────────────────────────────────────────
 
 VALID_FUNDS = {'honeymoon', 'adventure', 'donate_in_name'}
-VALID_MEALS = {'meat', 'fish', 'vegetarian'}
+VALID_MEALS = {'chicken', 'fish', 'vegetarian'}
 
 # Map fund name to the GiftDonation column name
 FUND_COLUMNS = {

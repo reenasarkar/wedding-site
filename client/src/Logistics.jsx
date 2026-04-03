@@ -8,9 +8,9 @@ import './Logistics.css';
 const TRANSPORT_LINK = 'https://docs.google.com/forms/d/e/1FAIpQLSf-BUV0DDWZZNmHs0yJvlFpbLkD1Jh6sUSHX1tfhUUOHagkcw/viewform';
 
 const mealOptions = [
-  { value: 'meat', label: 'Meat', image: reenaJamon },
-  { value: 'fish', label: 'Fish', image: varunFish },
-  { value: 'vegetarian', label: 'Vegetarian', image: zukoVeg },
+  { value: 'chicken', label: 'Chicken', image: reenaJamon, description: 'Chicken Thigh & Leg | Root Vegetable Succotash | Thyme Jus' },
+  { value: 'fish', label: 'Fish', image: varunFish, description: 'Seabass | Lemongrass Coconut Broth | Shimeji Mushrooms | Korean Rice Cakes' },
+  { value: 'vegetarian', label: 'Vegetarian', image: zukoVeg, description: 'Farro Risotto | Curried Carrot | Cashew | Braised Greens' },
 ];
 
 export default function Logistics() {
@@ -320,6 +320,7 @@ export default function Logistics() {
                       >
                         {option.image ? <img src={option.image} alt={option.label} className="logistics-meal-option-img" /> : <span className="logistics-meal-icon">{option.icon}</span>}
                         <span className="logistics-meal-title">{option.label}</span>
+                        {option.description && <span className="logistics-meal-desc">{option.description}</span>}
                       </button>
                     ))}
                   </div>
@@ -407,6 +408,7 @@ export default function Logistics() {
                         >
                           {option.image ? <img src={option.image} alt={option.label} className="logistics-meal-option-img" /> : <span className="logistics-meal-icon">{option.icon}</span>}
                           <span className="logistics-meal-title">{option.label}</span>
+                        {option.description && <span className="logistics-meal-desc">{option.description}</span>}
                         </button>
                       ))}
                     </div>
